@@ -17,3 +17,4 @@ D:\Projects\FlightManagement\FlightManagementProject\FlightManagement.UI\bin\Deb
 D:\Projects\FlightManagement\FlightManagementProject\FlightManagement.UI\bin\Debug\Ninject.xml
 D:\Projects\FlightManagement\FlightManagementProject\FlightManagement.UI\obj\Debug\FlightManagement.UI.csprojAssemblyReference.cache
 D:\Projects\FlightManagement\FlightManagementProject\FlightManagement.UI\obj\Debug\FlightManagement.UI.csproj.CopyComplete
+D:\Projects\FlightManagement\FlightManagementProject\FlightManagement.UI\obj\Debug\FlightManagement.UI.PlaneForm.resources
