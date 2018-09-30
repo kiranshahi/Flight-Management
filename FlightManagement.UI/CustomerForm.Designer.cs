@@ -33,6 +33,7 @@
             this.lblSearch = new System.Windows.Forms.Label();
             this.txtSearch = new System.Windows.Forms.TextBox();
             this.dgvCustomer = new System.Windows.Forms.DataGridView();
+            this.Id = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.SN = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.CustomerName = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Address = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -43,20 +44,20 @@
             this.btnSaveCust = new System.Windows.Forms.Button();
             this.btnDelete = new System.Windows.Forms.Button();
             this.panel2 = new System.Windows.Forms.Panel();
-            this.lblAddCust = new System.Windows.Forms.Label();
-            this.lblCity = new System.Windows.Forms.Label();
-            this.lblCountry = new System.Windows.Forms.Label();
-            this.txtCity = new System.Windows.Forms.TextBox();
-            this.txtCountry = new System.Windows.Forms.TextBox();
-            this.lblCustName = new System.Windows.Forms.Label();
-            this.lblAddress = new System.Windows.Forms.Label();
-            this.txtName = new System.Windows.Forms.TextBox();
-            this.txtAddress = new System.Windows.Forms.TextBox();
-            this.lblContact = new System.Windows.Forms.Label();
-            this.lblEmail = new System.Windows.Forms.Label();
-            this.txtContact = new System.Windows.Forms.TextBox();
-            this.txtEmail = new System.Windows.Forms.TextBox();
             this.btnCancel = new System.Windows.Forms.Button();
+            this.txtAddress = new System.Windows.Forms.TextBox();
+            this.txtEmail = new System.Windows.Forms.TextBox();
+            this.txtCountry = new System.Windows.Forms.TextBox();
+            this.txtName = new System.Windows.Forms.TextBox();
+            this.lblAddress = new System.Windows.Forms.Label();
+            this.txtContact = new System.Windows.Forms.TextBox();
+            this.txtCity = new System.Windows.Forms.TextBox();
+            this.lblEmail = new System.Windows.Forms.Label();
+            this.lblCustName = new System.Windows.Forms.Label();
+            this.lblContact = new System.Windows.Forms.Label();
+            this.lblCountry = new System.Windows.Forms.Label();
+            this.lblCity = new System.Windows.Forms.Label();
+            this.lblAddCust = new System.Windows.Forms.Label();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvCustomer)).BeginInit();
             this.panel2.SuspendLayout();
@@ -76,7 +77,7 @@
             // lblCustDetails
             // 
             this.lblCustDetails.AutoSize = true;
-            this.lblCustDetails.Location = new System.Drawing.Point(341, 7);
+            this.lblCustDetails.Location = new System.Drawing.Point(343, 32);
             this.lblCustDetails.Name = "lblCustDetails";
             this.lblCustDetails.Size = new System.Drawing.Size(89, 13);
             this.lblCustDetails.TabIndex = 7;
@@ -97,12 +98,15 @@
             this.txtSearch.Name = "txtSearch";
             this.txtSearch.Size = new System.Drawing.Size(243, 20);
             this.txtSearch.TabIndex = 5;
+            this.txtSearch.TextChanged += new System.EventHandler(this.txtSearch_TextChanged);
             // 
             // dgvCustomer
             // 
             this.dgvCustomer.AllowUserToAddRows = false;
+            this.dgvCustomer.AllowUserToDeleteRows = false;
             this.dgvCustomer.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgvCustomer.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.Id,
             this.SN,
             this.CustomerName,
             this.Address,
@@ -112,56 +116,72 @@
             this.Email});
             this.dgvCustomer.Location = new System.Drawing.Point(6, 56);
             this.dgvCustomer.Name = "dgvCustomer";
+            this.dgvCustomer.ReadOnly = true;
             this.dgvCustomer.RowHeadersVisible = false;
             this.dgvCustomer.Size = new System.Drawing.Size(903, 370);
             this.dgvCustomer.TabIndex = 4;
+            this.dgvCustomer.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvCustomer_CellContentClick);
+            // 
+            // Id
+            // 
+            this.Id.HeaderText = "Id";
+            this.Id.Name = "Id";
+            this.Id.ReadOnly = true;
+            this.Id.Visible = false;
             // 
             // SN
             // 
             this.SN.HeaderText = "S.N.";
             this.SN.Name = "SN";
+            this.SN.ReadOnly = true;
             this.SN.Width = 50;
             // 
             // CustomerName
             // 
             this.CustomerName.HeaderText = "Name";
             this.CustomerName.Name = "CustomerName";
+            this.CustomerName.ReadOnly = true;
             this.CustomerName.Width = 150;
             // 
             // Address
             // 
             this.Address.HeaderText = "Address";
             this.Address.Name = "Address";
+            this.Address.ReadOnly = true;
             this.Address.Width = 200;
             // 
             // City
             // 
             this.City.HeaderText = "City";
             this.City.Name = "City";
+            this.City.ReadOnly = true;
             this.City.Width = 150;
             // 
             // Country
             // 
             this.Country.HeaderText = "Country";
             this.Country.Name = "Country";
+            this.Country.ReadOnly = true;
             this.Country.Width = 150;
             // 
             // Contact
             // 
             this.Contact.HeaderText = "Contact";
             this.Contact.Name = "Contact";
+            this.Contact.ReadOnly = true;
             // 
             // Email
             // 
             this.Email.HeaderText = "Email";
             this.Email.Name = "Email";
+            this.Email.ReadOnly = true;
             // 
             // btnSaveCust
             // 
             this.btnSaveCust.Location = new System.Drawing.Point(60, 153);
             this.btnSaveCust.Name = "btnSaveCust";
             this.btnSaveCust.Size = new System.Drawing.Size(88, 30);
-            this.btnSaveCust.TabIndex = 8;
+            this.btnSaveCust.TabIndex = 6;
             this.btnSaveCust.Text = "Save";
             this.btnSaveCust.UseVisualStyleBackColor = true;
             this.btnSaveCust.Click += new System.EventHandler(this.btnSaveCust_Click);
@@ -175,6 +195,7 @@
             this.btnDelete.TabIndex = 8;
             this.btnDelete.Text = "Delete";
             this.btnDelete.UseVisualStyleBackColor = true;
+            this.btnDelete.Click += new System.EventHandler(this.btnDelete_Click);
             // 
             // panel2
             // 
@@ -199,55 +220,44 @@
             this.panel2.Size = new System.Drawing.Size(918, 196);
             this.panel2.TabIndex = 1;
             // 
-            // lblAddCust
+            // btnCancel
             // 
-            this.lblAddCust.AutoSize = true;
-            this.lblAddCust.Location = new System.Drawing.Point(341, 9);
-            this.lblAddCust.Name = "lblAddCust";
-            this.lblAddCust.Size = new System.Drawing.Size(113, 13);
-            this.lblAddCust.TabIndex = 7;
-            this.lblAddCust.Text = "Add/Update Customer";
+            this.btnCancel.DialogResult = System.Windows.Forms.DialogResult.Cancel;
+            this.btnCancel.Location = new System.Drawing.Point(277, 153);
+            this.btnCancel.Name = "btnCancel";
+            this.btnCancel.Size = new System.Drawing.Size(88, 30);
+            this.btnCancel.TabIndex = 8;
+            this.btnCancel.Text = "Cancel";
+            this.btnCancel.UseVisualStyleBackColor = true;
+            this.btnCancel.Click += new System.EventHandler(this.btnCancel_Click);
             // 
-            // lblCity
+            // txtAddress
             // 
-            this.lblCity.AutoSize = true;
-            this.lblCity.Location = new System.Drawing.Point(305, 36);
-            this.lblCity.Name = "lblCity";
-            this.lblCity.Size = new System.Drawing.Size(27, 13);
-            this.lblCity.TabIndex = 8;
-            this.lblCity.Text = "City:";
+            this.txtAddress.Location = new System.Drawing.Point(60, 96);
+            this.txtAddress.Name = "txtAddress";
+            this.txtAddress.Size = new System.Drawing.Size(231, 20);
+            this.txtAddress.TabIndex = 3;
             // 
-            // lblCountry
+            // txtEmail
             // 
-            this.lblCountry.AutoSize = true;
-            this.lblCountry.Location = new System.Drawing.Point(296, 97);
-            this.lblCountry.Name = "lblCountry";
-            this.lblCountry.Size = new System.Drawing.Size(46, 13);
-            this.lblCountry.TabIndex = 8;
-            this.lblCountry.Text = "Country:";
-            // 
-            // txtCity
-            // 
-            this.txtCity.Location = new System.Drawing.Point(344, 32);
-            this.txtCity.Name = "txtCity";
-            this.txtCity.Size = new System.Drawing.Size(255, 20);
-            this.txtCity.TabIndex = 9;
+            this.txtEmail.Location = new System.Drawing.Point(657, 94);
+            this.txtEmail.Name = "txtEmail";
+            this.txtEmail.Size = new System.Drawing.Size(255, 20);
+            this.txtEmail.TabIndex = 5;
             // 
             // txtCountry
             // 
             this.txtCountry.Location = new System.Drawing.Point(344, 95);
             this.txtCountry.Name = "txtCountry";
             this.txtCountry.Size = new System.Drawing.Size(255, 20);
-            this.txtCountry.TabIndex = 9;
+            this.txtCountry.TabIndex = 4;
             // 
-            // lblCustName
+            // txtName
             // 
-            this.lblCustName.AutoSize = true;
-            this.lblCustName.Location = new System.Drawing.Point(11, 36);
-            this.lblCustName.Name = "lblCustName";
-            this.lblCustName.Size = new System.Drawing.Size(38, 13);
-            this.lblCustName.TabIndex = 8;
-            this.lblCustName.Text = "Name:";
+            this.txtName.Location = new System.Drawing.Point(60, 34);
+            this.txtName.Name = "txtName";
+            this.txtName.Size = new System.Drawing.Size(231, 20);
+            this.txtName.TabIndex = 0;
             // 
             // lblAddress
             // 
@@ -258,28 +268,19 @@
             this.lblAddress.TabIndex = 8;
             this.lblAddress.Text = "Address:";
             // 
-            // txtName
+            // txtContact
             // 
-            this.txtName.Location = new System.Drawing.Point(60, 34);
-            this.txtName.Name = "txtName";
-            this.txtName.Size = new System.Drawing.Size(231, 20);
-            this.txtName.TabIndex = 9;
+            this.txtContact.Location = new System.Drawing.Point(657, 31);
+            this.txtContact.Name = "txtContact";
+            this.txtContact.Size = new System.Drawing.Size(255, 20);
+            this.txtContact.TabIndex = 2;
             // 
-            // txtAddress
+            // txtCity
             // 
-            this.txtAddress.Location = new System.Drawing.Point(60, 96);
-            this.txtAddress.Name = "txtAddress";
-            this.txtAddress.Size = new System.Drawing.Size(231, 20);
-            this.txtAddress.TabIndex = 9;
-            // 
-            // lblContact
-            // 
-            this.lblContact.AutoSize = true;
-            this.lblContact.Location = new System.Drawing.Point(608, 33);
-            this.lblContact.Name = "lblContact";
-            this.lblContact.Size = new System.Drawing.Size(47, 13);
-            this.lblContact.TabIndex = 8;
-            this.lblContact.Text = "Contact:";
+            this.txtCity.Location = new System.Drawing.Point(344, 32);
+            this.txtCity.Name = "txtCity";
+            this.txtCity.Size = new System.Drawing.Size(255, 20);
+            this.txtCity.TabIndex = 1;
             // 
             // lblEmail
             // 
@@ -290,35 +291,58 @@
             this.lblEmail.TabIndex = 8;
             this.lblEmail.Text = "Email:";
             // 
-            // txtContact
+            // lblCustName
             // 
-            this.txtContact.Location = new System.Drawing.Point(657, 31);
-            this.txtContact.Name = "txtContact";
-            this.txtContact.Size = new System.Drawing.Size(255, 20);
-            this.txtContact.TabIndex = 9;
+            this.lblCustName.AutoSize = true;
+            this.lblCustName.Location = new System.Drawing.Point(11, 36);
+            this.lblCustName.Name = "lblCustName";
+            this.lblCustName.Size = new System.Drawing.Size(38, 13);
+            this.lblCustName.TabIndex = 8;
+            this.lblCustName.Text = "Name:";
             // 
-            // txtEmail
+            // lblContact
             // 
-            this.txtEmail.Location = new System.Drawing.Point(657, 94);
-            this.txtEmail.Name = "txtEmail";
-            this.txtEmail.Size = new System.Drawing.Size(255, 20);
-            this.txtEmail.TabIndex = 9;
+            this.lblContact.AutoSize = true;
+            this.lblContact.Location = new System.Drawing.Point(608, 33);
+            this.lblContact.Name = "lblContact";
+            this.lblContact.Size = new System.Drawing.Size(47, 13);
+            this.lblContact.TabIndex = 8;
+            this.lblContact.Text = "Contact:";
             // 
-            // btnCancel
+            // lblCountry
             // 
-            this.btnCancel.Enabled = false;
-            this.btnCancel.Location = new System.Drawing.Point(277, 153);
-            this.btnCancel.Name = "btnCancel";
-            this.btnCancel.Size = new System.Drawing.Size(88, 30);
-            this.btnCancel.TabIndex = 8;
-            this.btnCancel.Text = "Cancel";
-            this.btnCancel.UseVisualStyleBackColor = true;
+            this.lblCountry.AutoSize = true;
+            this.lblCountry.Location = new System.Drawing.Point(296, 97);
+            this.lblCountry.Name = "lblCountry";
+            this.lblCountry.Size = new System.Drawing.Size(46, 13);
+            this.lblCountry.TabIndex = 8;
+            this.lblCountry.Text = "Country:";
+            // 
+            // lblCity
+            // 
+            this.lblCity.AutoSize = true;
+            this.lblCity.Location = new System.Drawing.Point(305, 36);
+            this.lblCity.Name = "lblCity";
+            this.lblCity.Size = new System.Drawing.Size(27, 13);
+            this.lblCity.TabIndex = 8;
+            this.lblCity.Text = "City:";
+            // 
+            // lblAddCust
+            // 
+            this.lblAddCust.AutoSize = true;
+            this.lblAddCust.Location = new System.Drawing.Point(341, 9);
+            this.lblAddCust.Name = "lblAddCust";
+            this.lblAddCust.Size = new System.Drawing.Size(113, 13);
+            this.lblAddCust.TabIndex = 7;
+            this.lblAddCust.Text = "Add/Update Customer";
             // 
             // CustomerForm
             // 
+            this.AcceptButton = this.btnSaveCust;
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(927, 450);
+            this.CancelButton = this.btnCancel;
+            this.ClientSize = new System.Drawing.Size(927, 650);
             this.Controls.Add(this.panel2);
             this.Controls.Add(this.panel1);
             this.Name = "CustomerForm";
@@ -339,13 +363,6 @@
         private System.Windows.Forms.Label lblSearch;
         private System.Windows.Forms.TextBox txtSearch;
         private System.Windows.Forms.DataGridView dgvCustomer;
-        private System.Windows.Forms.DataGridViewTextBoxColumn SN;
-        private System.Windows.Forms.DataGridViewTextBoxColumn CustomerName;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Address;
-        private System.Windows.Forms.DataGridViewTextBoxColumn City;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Country;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Contact;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Email;
         private System.Windows.Forms.Button btnDelete;
         private System.Windows.Forms.Button btnSaveCust;
         private System.Windows.Forms.Panel panel2;
@@ -363,5 +380,13 @@
         private System.Windows.Forms.Label lblCity;
         private System.Windows.Forms.Label lblAddCust;
         private System.Windows.Forms.Button btnCancel;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Id;
+        private System.Windows.Forms.DataGridViewTextBoxColumn SN;
+        private System.Windows.Forms.DataGridViewTextBoxColumn CustomerName;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Address;
+        private System.Windows.Forms.DataGridViewTextBoxColumn City;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Country;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Contact;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Email;
     }
 }

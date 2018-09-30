@@ -37,6 +37,18 @@ namespace FlightManagement.BLL
             }
         }
 
+        public List<Customer> GetCustomersById(string custId)
+        {
+            try
+            {
+                return _customerRepo.GetCustomersById(custId);
+            }
+            catch (Exception ex)
+            {
+                throw;
+            }
+        }
+
         public int SaveUpdateCustomer(Customer cust)
         {
             try

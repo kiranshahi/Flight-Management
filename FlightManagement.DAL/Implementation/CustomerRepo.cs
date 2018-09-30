@@ -1,4 +1,5 @@
 ﻿using FlightManagement.Domain;
+using System;
 using System.Collections.Generic;
 using System.Data;
 using System.Data.SqlClient;
@@ -28,6 +29,31 @@ namespace FlightManagement.DAL
         {
             string sqlQuery = "Select * from Customer";
             DataTable dataTable = _dBO.GetTable(sqlQuery, null, CommandType.Text);
+            List<Customer> listCust = new List<Customer>();
+            if (dataTable.Rows.Count > 0)
+            {
+                listCust = dataTable.AsEnumerable().Select(m => new Customer()
+                {
+                    Id = m.Field<int>("Id"),
+                    Name = m.Field<string>("Name"),
+                    Address = m.Field<string>("Address"),
+                    City = m.Field<string>("City"),
+                    Country = m.Field<string>("Country"),
+                    Contact = m.Field<long>("Contact"),
+                    Email = m.Field<string>("Email"),
+                }).ToList();
+            }
+            return listCust;
+        }
+
+        public List<Customer> GetCustomersById(string custId)
+        {
+            string sqlQuery = "Select * from Customer where Name Like @Name";
+            SqlParameter[] param = new SqlParameter[]
+            {
+                new SqlParameter("@Name", custId +"%")
+            };
+            DataTable dataTable = _dBO.GetTable(sqlQuery, param, CommandType.Text);
             List<Customer> listCust = new List<Customer>();
             if (dataTable.Rows.Count > 0)
             {
