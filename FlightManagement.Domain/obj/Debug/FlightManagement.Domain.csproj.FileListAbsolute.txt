@@ -1,0 +1,6 @@
+D:\Projects\FlightManagement\FlightManagementProject\FlightManagement.Domain\bin\Debug\FlightManagement.Domain.dll
+D:\Projects\FlightManagement\FlightManagementProject\FlightManagement.Domain\bin\Debug\FlightManagement.Domain.pdb
+D:\Projects\FlightManagement\FlightManagementProject\FlightManagement.Domain\obj\Debug\FlightManagement.Domain.csprojAssemblyReference.cache
+D:\Projects\FlightManagement\FlightManagementProject\FlightManagement.Domain\obj\Debug\FlightManagement.Domain.csproj.CoreCompileInputs.cache
+D:\Projects\FlightManagement\FlightManagementProject\FlightManagement.Domain\obj\Debug\FlightManagement.Domain.dll
+D:\Projects\FlightManagement\FlightManagementProject\FlightManagement.Domain\obj\Debug\FlightManagement.Domain.pdb

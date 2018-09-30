@@ -1,0 +1,9 @@
+D:\Projects\FlightManagement\FlightManagementProject\FlightManagement.DAL\bin\Debug\FlightManagement.DAL.dll
+D:\Projects\FlightManagement\FlightManagementProject\FlightManagement.DAL\bin\Debug\FlightManagement.DAL.pdb
+D:\Projects\FlightManagement\FlightManagementProject\FlightManagement.DAL\obj\Debug\FlightManagement.DAL.csproj.CoreCompileInputs.cache
+D:\Projects\FlightManagement\FlightManagementProject\FlightManagement.DAL\obj\Debug\FlightManagement.DAL.dll
+D:\Projects\FlightManagement\FlightManagementProject\FlightManagement.DAL\obj\Debug\FlightManagement.DAL.pdb
+D:\Projects\FlightManagement\FlightManagementProject\FlightManagement.DAL\bin\Debug\FlightManagement.Domain.dll
+D:\Projects\FlightManagement\FlightManagementProject\FlightManagement.DAL\bin\Debug\FlightManagement.Domain.pdb
+D:\Projects\FlightManagement\FlightManagementProject\FlightManagement.DAL\obj\Debug\FlightManagement.DAL.csprojAssemblyReference.cache
+D:\Projects\FlightManagement\FlightManagementProject\FlightManagement.DAL\obj\Debug\FlightManagement.DAL.csproj.CopyComplete
