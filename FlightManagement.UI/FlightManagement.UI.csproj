@@ -49,6 +49,12 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="CargoForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="CargoForm.Designer.cs">
+      <DependentUpon>CargoForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="CustomerForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -56,6 +62,12 @@
       <DependentUpon>CustomerForm.cs</DependentUpon>
     </Compile>
     <Compile Include="DIBindings\Bindings.cs" />
+    <Compile Include="PlaneBookingForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="PlaneBookingForm.Designer.cs">
+      <DependentUpon>PlaneBookingForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="PlaneForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -64,8 +76,14 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <EmbeddedResource Include="CargoForm.resx">
+      <DependentUpon>CargoForm.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="CustomerForm.resx">
       <DependentUpon>CustomerForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="PlaneBookingForm.resx">
+      <DependentUpon>PlaneBookingForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="PlaneForm.resx">
       <DependentUpon>PlaneForm.cs</DependentUpon>

@@ -12,6 +12,10 @@ namespace FlightManagement.UI.DIBindings
             Bind<ICustomerRepo>().To<CustomerRepo>();
             Bind<IPlaneService>().To<PlaneService>();
             Bind<IPlaneRepo>().To<PlaneRepo>();
+            Bind<ICargoRepo>().To<CargoRepo>();
+            Bind<ICargoService>().To<CargoService>();
+            Bind<IPlaneBookRepo>().To<PlaneBookRepo>();
+            Bind<IPlaneBookService>().To<PlaneBookService>();
             Bind<IDBO>().To<DBO>();
         }
     }

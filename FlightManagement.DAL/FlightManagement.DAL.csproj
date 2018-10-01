@@ -43,8 +43,10 @@
   <ItemGroup>
     <Compile Include="DBOperation\DBO.cs" />
     <Compile Include="DBOperation\IDBO.cs" />
+    <Compile Include="Implementation\CargoRepo.cs" />
     <Compile Include="Implementation\PlaneBookRepo.cs" />
     <Compile Include="Implementation\PlaneRepo.cs" />
+    <Compile Include="Interface\ICargoRepo.cs" />
     <Compile Include="Interface\ICustomerRepo.cs" />
     <Compile Include="Interface\IPlaneBookRepo.cs" />
     <Compile Include="Interface\IPlaneRepo.cs" />

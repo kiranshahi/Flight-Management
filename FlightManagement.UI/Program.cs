@@ -21,10 +21,12 @@ namespace FlightManagement.UI
             kernel.Load(Assembly.GetExecutingAssembly());
             var customerService = kernel.Get<ICustomerService>();
             var planeService = kernel.Get<IPlaneService>();
+            var cargoService = kernel.Get<ICargoService>();
+            var planeBookService = kernel.Get<IPlaneBookService>();
 
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new PlaneForm(planeService));
+            Application.Run(new CargoForm(cargoService));
         }
     }
 }

@@ -41,6 +41,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Entities\Cargo.cs" />
     <Compile Include="Entities\Customer.cs" />
     <Compile Include="Entities\Plane.cs" />
     <Compile Include="Entities\PlaneBook.cs" />
