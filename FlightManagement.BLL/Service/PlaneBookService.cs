@@ -1,10 +1,7 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using FlightManagement.DAL;
+﻿using FlightManagement.DAL;
 using FlightManagement.Domain;
+using System;
+using System.Collections.Generic;
 
 namespace FlightManagement.BLL
 {
@@ -51,11 +48,23 @@ namespace FlightManagement.BLL
             }
         }
 
-        public int SaveUpdateBooking(PlaneBook planeBook)
+        public int SaveUpdateBookingCargo(PlaneBook planeBook)
         {
             try
             {
-                return _planeBookRepo.SaveUpdateBooking(planeBook);
+                return _planeBookRepo.SaveUpdateBookingCargo(planeBook);
+            }
+            catch (Exception ex)
+            {
+                throw;
+            }
+        }
+
+        public int SaveUpdateBookingCust(PlaneBook planeBook)
+        {
+            try
+            {
+                return _planeBookRepo.SaveUpdateBookingCust(planeBook);
             }
             catch (Exception ex)
             {

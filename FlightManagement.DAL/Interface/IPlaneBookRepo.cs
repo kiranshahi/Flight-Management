@@ -7,7 +7,8 @@ namespace FlightManagement.DAL
     {
         List<PlaneBook> GetAllBooking();
         List<PlaneBook> GetBookingByCustName(string custName);
-        int SaveUpdateBooking(PlaneBook planeBook);
+        int SaveUpdateBookingCust(PlaneBook planeBook);
+        int SaveUpdateBookingCargo(PlaneBook planeBook);
         int Cancelbooking(string custName);
     }
 }

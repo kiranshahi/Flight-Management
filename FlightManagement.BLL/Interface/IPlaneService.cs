@@ -7,7 +7,8 @@ namespace FlightManagement.BLL
     {
         List<Plane> GetAllPlanes();
         List<Plane> GetPlanesById(string planeId);
-        int SaveUpdatePlane(Plane plane);
+        List<Plane> GetPlanesByPlaneType(string planeType);
+        int SaveUpdatePlane(Plane cust);
         int DeletePlane(int planeId);
     }
 }

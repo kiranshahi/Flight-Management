@@ -49,6 +49,18 @@ namespace FlightManagement.BLL
             }
         }
 
+        public List<Plane> GetPlanesByPlaneType(string planeType)
+        {
+            try
+            {
+                return _planeRepo.GetPlanesByPlaneType(planeType);
+            }
+            catch (Exception ex)
+            {
+                throw;
+            }
+        }
+
         public int SaveUpdatePlane(Plane cust)
         {
             try

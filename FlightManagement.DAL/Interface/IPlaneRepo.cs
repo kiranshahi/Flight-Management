@@ -7,6 +7,7 @@ namespace FlightManagement.DAL
     {
         List<Plane> GetAllPlanes();
         List<Plane> GetPlanesById(string planeId);
+        List<Plane> GetPlanesByPlaneType(string planeType);
         int SaveUpdatePlane(Plane plane);
         int DeletePlane(int planeId);
     }

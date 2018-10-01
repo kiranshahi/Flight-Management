@@ -65,6 +65,26 @@ namespace FlightManagement.DAL
             return listPlane;
         }
 
+        public List<Plane> GetPlanesByPlaneType(string planeType)
+        {
+            string sqlQuery = "Select Id, PlaneName from Plane where planeType = @PlaneType";
+            SqlParameter[] param = new SqlParameter[]
+            {
+                new SqlParameter("@PlaneType", planeType)
+            };
+            DataTable dataTable = _dBO.GetTable(sqlQuery, param, CommandType.Text);
+            List<Plane> listPlane = new List<Plane>();
+            if (dataTable.Rows.Count > 0)
+            {
+                listPlane = dataTable.AsEnumerable().Select(m => new Plane()
+                {
+                    Id = m.Field<int>("Id"),
+                    PlaneName = m.Field<string>("PlaneName"),
+                }).ToList();
+            }
+            return listPlane;
+        }
+
         public int SaveUpdatePlane(Plane plane)
         {
             if (plane.Id > 0)

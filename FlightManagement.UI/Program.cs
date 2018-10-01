@@ -26,7 +26,7 @@ namespace FlightManagement.UI
 
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new CargoForm(cargoService));
+            Application.Run(new PlaneBookingForm(planeBookService, planeService, cargoService, customerService));
         }
     }
 }
