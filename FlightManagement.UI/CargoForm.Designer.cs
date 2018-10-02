@@ -29,6 +29,8 @@
         private void InitializeComponent()
         {
             this.panel2 = new System.Windows.Forms.Panel();
+            this.ddlPlaneName = new System.Windows.Forms.ComboBox();
+            this.lblPlaneName = new System.Windows.Forms.Label();
             this.btnCancelCargo = new System.Windows.Forms.Button();
             this.btnDeleteCargo = new System.Windows.Forms.Button();
             this.txtCargoItem = new System.Windows.Forms.TextBox();
@@ -42,6 +44,7 @@
             this.dgvCargo = new System.Windows.Forms.DataGridView();
             this.Id = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.SN = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.PlaneName = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.CargoItem = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.panel2.SuspendLayout();
             this.panel1.SuspendLayout();
@@ -50,6 +53,8 @@
             // 
             // panel2
             // 
+            this.panel2.Controls.Add(this.ddlPlaneName);
+            this.panel2.Controls.Add(this.lblPlaneName);
             this.panel2.Controls.Add(this.btnCancelCargo);
             this.panel2.Controls.Add(this.btnDeleteCargo);
             this.panel2.Controls.Add(this.txtCargoItem);
@@ -59,7 +64,24 @@
             this.panel2.Location = new System.Drawing.Point(9, 8);
             this.panel2.Name = "panel2";
             this.panel2.Size = new System.Drawing.Size(472, 150);
-            this.panel2.TabIndex = 5;
+            this.panel2.TabIndex = 0;
+            // 
+            // ddlPlaneName
+            // 
+            this.ddlPlaneName.FormattingEnabled = true;
+            this.ddlPlaneName.Location = new System.Drawing.Point(91, 28);
+            this.ddlPlaneName.Name = "ddlPlaneName";
+            this.ddlPlaneName.Size = new System.Drawing.Size(372, 21);
+            this.ddlPlaneName.TabIndex = 0;
+            // 
+            // lblPlaneName
+            // 
+            this.lblPlaneName.AutoSize = true;
+            this.lblPlaneName.Location = new System.Drawing.Point(11, 32);
+            this.lblPlaneName.Name = "lblPlaneName";
+            this.lblPlaneName.Size = new System.Drawing.Size(68, 13);
+            this.lblPlaneName.TabIndex = 10;
+            this.lblPlaneName.Text = "Plane Name:";
             // 
             // btnCancelCargo
             // 
@@ -67,7 +89,7 @@
             this.btnCancelCargo.Location = new System.Drawing.Point(308, 101);
             this.btnCancelCargo.Name = "btnCancelCargo";
             this.btnCancelCargo.Size = new System.Drawing.Size(88, 30);
-            this.btnCancelCargo.TabIndex = 3;
+            this.btnCancelCargo.TabIndex = 4;
             this.btnCancelCargo.Text = "Cancel";
             this.btnCancelCargo.UseVisualStyleBackColor = true;
             this.btnCancelCargo.Click += new System.EventHandler(this.btnCancelCargo_Click);
@@ -78,22 +100,22 @@
             this.btnDeleteCargo.Location = new System.Drawing.Point(204, 101);
             this.btnDeleteCargo.Name = "btnDeleteCargo";
             this.btnDeleteCargo.Size = new System.Drawing.Size(88, 30);
-            this.btnDeleteCargo.TabIndex = 2;
+            this.btnDeleteCargo.TabIndex = 3;
             this.btnDeleteCargo.Text = "Delete";
             this.btnDeleteCargo.UseVisualStyleBackColor = true;
             this.btnDeleteCargo.Click += new System.EventHandler(this.btnDeleteCargo_Click);
             // 
             // txtCargoItem
             // 
-            this.txtCargoItem.Location = new System.Drawing.Point(91, 32);
+            this.txtCargoItem.Location = new System.Drawing.Point(91, 59);
             this.txtCargoItem.Name = "txtCargoItem";
             this.txtCargoItem.Size = new System.Drawing.Size(372, 20);
-            this.txtCargoItem.TabIndex = 0;
+            this.txtCargoItem.TabIndex = 1;
             // 
             // lblCArgoItem
             // 
             this.lblCArgoItem.AutoSize = true;
-            this.lblCArgoItem.Location = new System.Drawing.Point(11, 35);
+            this.lblCArgoItem.Location = new System.Drawing.Point(11, 62);
             this.lblCArgoItem.Name = "lblCArgoItem";
             this.lblCArgoItem.Size = new System.Drawing.Size(61, 13);
             this.lblCArgoItem.TabIndex = 8;
@@ -104,7 +126,7 @@
             this.btnSaveCargo.Location = new System.Drawing.Point(91, 101);
             this.btnSaveCargo.Name = "btnSaveCargo";
             this.btnSaveCargo.Size = new System.Drawing.Size(88, 30);
-            this.btnSaveCargo.TabIndex = 1;
+            this.btnSaveCargo.TabIndex = 2;
             this.btnSaveCargo.Text = "Save";
             this.btnSaveCargo.UseVisualStyleBackColor = true;
             this.btnSaveCargo.Click += new System.EventHandler(this.btnSaveCargo_Click);
@@ -127,7 +149,7 @@
             this.panel1.Location = new System.Drawing.Point(9, 210);
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(472, 432);
-            this.panel1.TabIndex = 4;
+            this.panel1.TabIndex = 1;
             // 
             // lblCArgoDetails
             // 
@@ -163,6 +185,7 @@
             this.dgvCargo.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.Id,
             this.SN,
+            this.PlaneName,
             this.CargoItem});
             this.dgvCargo.Location = new System.Drawing.Point(10, 62);
             this.dgvCargo.Name = "dgvCargo";
@@ -184,6 +207,14 @@
             this.SN.HeaderText = "S.N.";
             this.SN.Name = "SN";
             this.SN.ReadOnly = true;
+            this.SN.Width = 50;
+            // 
+            // PlaneName
+            // 
+            this.PlaneName.HeaderText = "PlaneName";
+            this.PlaneName.Name = "PlaneName";
+            this.PlaneName.ReadOnly = true;
+            this.PlaneName.Width = 150;
             // 
             // CargoItem
             // 
@@ -226,8 +257,11 @@
         private System.Windows.Forms.Label lblSearchCargo;
         private System.Windows.Forms.TextBox txtSearchCargo;
         private System.Windows.Forms.DataGridView dgvCargo;
+        private System.Windows.Forms.ComboBox ddlPlaneName;
+        private System.Windows.Forms.Label lblPlaneName;
         private System.Windows.Forms.DataGridViewTextBoxColumn Id;
         private System.Windows.Forms.DataGridViewTextBoxColumn SN;
+        private System.Windows.Forms.DataGridViewTextBoxColumn PlaneName;
         private System.Windows.Forms.DataGridViewTextBoxColumn CargoItem;
     }
 }

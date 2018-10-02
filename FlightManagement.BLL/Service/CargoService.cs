@@ -37,6 +37,18 @@ namespace FlightManagement.BLL
             }
         }
 
+        public List<Plane> GetAllCargoPlanes()
+        {
+            try
+            {
+                return _cargoRepo.GetAllCargoPlanes();
+            }
+            catch (Exception ex)
+            {
+                throw;
+            }
+        }
+
         public List<Cargo> GetCargoById(string cargoId)
         {
             try

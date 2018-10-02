@@ -14,6 +14,7 @@ namespace FlightManagement.UI
         {
             InitializeComponent();
             this._cargoService = _cargoService;
+            LoadAllCargoPlanes();
             LoadAllCargo();
             txtCargoItem.Focus();
         }
@@ -31,9 +32,29 @@ namespace FlightManagement.UI
                         dgvCargo.Rows.Add();
                         dgvCargo.Rows[i].Cells["SN"].Value = i + 1;
                         dgvCargo.Rows[i].Cells["Id"].Value = cargos[i].Id.ToString();
+                        dgvCargo.Rows[i].Cells["PlaneName"].Value = cargos[i].PlaneName.ToString();
                         dgvCargo.Rows[i].Cells["CargoItem"].Value = cargos[i].CargoItem.ToString();
                     }
                 }
+            }
+            catch (Exception ex)
+            {
+                throw;
+            }
+        }
+
+        private void LoadAllCargoPlanes()
+        {
+            try
+            {
+                List<Plane> planes = _cargoService.GetAllCargoPlanes();
+                planes.Insert(0, new Plane()
+                {
+                    PlaneName = "Select Planes"
+                });
+                ddlPlaneName.DataSource = planes;
+                ddlPlaneName.DisplayMember = "PlaneName";
+                ddlPlaneName.ValueMember = "Id";
             }
             catch (Exception ex)
             {
@@ -45,37 +66,50 @@ namespace FlightManagement.UI
         {
             try
             {
+                int planeId = Convert.ToInt32(ddlPlaneName.SelectedValue.ToString());
                 string cargoItem = txtCargoItem.Text.Trim();
-                if (cargoItem == "")
+                if (planeId == 0 && cargoItem == "")
                 {
-                    MessageBox.Show("Cargo Item is required", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    MessageBox.Show("All fields are required required", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
                 else
                 {
-                    Cargo cargo = new Cargo
+                    if (planeId == 0)
                     {
-                        CargoItem = cargoItem
-                    };
-                    if (btnSaveCargo.Text == "Save")
+                        MessageBox.Show("Select a plane", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    }
+                    else if (cargoItem == "")
                     {
-                        int cargoSucc = _cargoService.SaveUpdateCargo(cargo);
-                        if (cargoSucc > 0)
-                        {
-                            MessageBox.Show("Cargo item saved successfully.", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                        }
+                        MessageBox.Show("Cargo Item is required", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     }
                     else
                     {
-                        cargo.Id = cargoId;
-                        int cargoSucc = _cargoService.SaveUpdateCargo(cargo);
-                        if (cargoSucc > 0)
+                        Cargo cargo = new Cargo
                         {
-                            MessageBox.Show("Cargo item updated successfully.", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                            PlaneId = planeId,
+                            CargoItem = cargoItem
+                        };
+                        if (btnSaveCargo.Text == "Save")
+                        {
+                            int cargoSucc = _cargoService.SaveUpdateCargo(cargo);
+                            if (cargoSucc > 0)
+                            {
+                                MessageBox.Show("Cargo item saved successfully.", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                            }
                         }
+                        else
+                        {
+                            cargo.Id = cargoId;
+                            int cargoSucc = _cargoService.SaveUpdateCargo(cargo);
+                            if (cargoSucc > 0)
+                            {
+                                MessageBox.Show("Cargo item updated successfully.", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                            }
+                        }
+                        CargoClearance();
+                        LoadAllCargo();
                     }
-                    CargoClearance();
-                    LoadAllCargo();
-                }
+                }                
             }
             catch (Exception ex)
             {
@@ -86,6 +120,7 @@ namespace FlightManagement.UI
         private void CargoClearance()
         {
             txtCargoItem.Clear();
+            ddlPlaneName.SelectedIndex = 0;
             btnSaveCargo.Text = "Save";
             btnDeleteCargo.Enabled = false;
         }
@@ -126,6 +161,7 @@ namespace FlightManagement.UI
             {
                 cargoId = Convert.ToInt32(dgvCargo.CurrentRow.Cells["Id"].Value.ToString());
                 txtCargoItem.Text = dgvCargo.CurrentRow.Cells["CargoItem"].Value.ToString();
+                ddlPlaneName.Text = dgvCargo.CurrentRow.Cells["PlaneName"].Value.ToString();
                 btnSaveCargo.Text = "Update";
                 btnDeleteCargo.Enabled = true;
             }
@@ -146,6 +182,7 @@ namespace FlightManagement.UI
                     dgvCargo.Rows.Add();
                     dgvCargo.Rows[i].Cells["SN"].Value = i + 1;
                     dgvCargo.Rows[i].Cells["Id"].Value = cargos[i].Id.ToString();
+                    dgvCargo.Rows[i].Cells["PlaneName"].Value = cargos[i].PlaneName.ToString();
                     dgvCargo.Rows[i].Cells["CargoItem"].Value = cargos[i].CargoItem.ToString();
                 }
             }

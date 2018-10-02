@@ -24,6 +24,65 @@ namespace FlightManagement.UI
             ddlPlaneName.SelectedIndex = 0;
             ddlCargoItem.SelectedIndex = 0;
             ddlCustName.SelectedIndex = 0;
+            LoadAllBookingsCurrentDate();
+        }
+
+        private void LoadAllBookingsCurrentDate()
+        {
+            try
+            {
+                List<PlaneBook> planeBooks = _planeBookService.GetAllBookingCurrentDate(dtPBookedDate.Value.ToShortDateString());
+                if (planeBooks.Count > 0)
+                {
+                    dgvBooking.Rows.Clear();
+                    for (int i = 0; i < planeBooks.Count; i++)
+                    {
+                        dgvBooking.Rows.Add();
+                        dgvBooking.Rows[i].Cells["SN"].Value = i + 1;
+                        dgvBooking.Rows[i].Cells["Id"].Value = planeBooks[i].Id.ToString();
+                        dgvBooking.Rows[i].Cells["ClientName"].Value = planeBooks[i].BookedBy.ToString();
+                        dgvBooking.Rows[i].Cells["PlaneName"].Value = planeBooks[i].PlaneList.PlaneName.ToString();
+                        dgvBooking.Rows[i].Cells["PlaneType"].Value = planeBooks[i].PlaneList.PlaneType.ToString();
+                        dgvBooking.Rows[i].Cells["CargoItem"].Value = Convert.ToString(planeBooks[i].CargoList.CargoItem);
+                        dgvBooking.Rows[i].Cells["Departure"].Value = planeBooks[i].Departure.ToString();
+                        dgvBooking.Rows[i].Cells["Arrival"].Value = planeBooks[i].Arrival.ToString();
+                        dgvBooking.Rows[i].Cells["CustomerName"].Value = Convert.ToString(planeBooks[i].CustomerList.Name);
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                throw;
+            }
+        }
+
+        private void LoadAllBookings()
+        {
+            try
+            {
+                List<PlaneBook> planeBooks = _planeBookService.GetAllBooking();
+                if (planeBooks.Count > 0)
+                {
+                    dgvBooking.Rows.Clear();
+                    for (int i = 0; i < planeBooks.Count; i++)
+                    {
+                        dgvBooking.Rows.Add();
+                        dgvBooking.Rows[i].Cells["SN"].Value = i + 1;
+                        dgvBooking.Rows[i].Cells["Id"].Value = planeBooks[i].Id.ToString();
+                        dgvBooking.Rows[i].Cells["ClientName"].Value = planeBooks[i].BookedBy.ToString();
+                        dgvBooking.Rows[i].Cells["PlaneName"].Value = planeBooks[i].PlaneList.PlaneName.ToString();
+                        dgvBooking.Rows[i].Cells["PlaneType"].Value = planeBooks[i].PlaneList.PlaneType.ToString();
+                        dgvBooking.Rows[i].Cells["CargoItem"].Value = Convert.ToString(planeBooks[i].CargoList.CargoItem);
+                        dgvBooking.Rows[i].Cells["Departure"].Value = planeBooks[i].Departure.ToString();
+                        dgvBooking.Rows[i].Cells["Arrival"].Value = planeBooks[i].Arrival.ToString();
+                        dgvBooking.Rows[i].Cells["CustomerName"].Value = Convert.ToString(planeBooks[i].CustomerList.Name);
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                throw;
+            }
         }
 
         private void ddlPlaneType_SelectedIndexChanged(object sender, EventArgs e)
@@ -38,11 +97,15 @@ namespace FlightManagement.UI
                     ddlPlaneName.SelectedIndex = 0;
                     ddlCargoItem.SelectedIndex = 0;
                     ddlCustName.SelectedIndex = 0;
+                    btnSavePlaneBooking.Text = "Save";
                     btnSavePlaneBooking.Enabled = false;
                 }
                 else
                 {
-                    GetPlaneByPlaneType(ddlPlaneType.SelectedItem.ToString());
+                    if (btnSavePlaneBooking.Text == "Save")
+                    {
+                        GetPlaneByPlaneType(ddlPlaneType.SelectedItem.ToString());
+                    }
                     if (ddlPlaneType.Text == "Cargo")
                     {
                         btnSavePlaneBooking.Enabled = true;
@@ -54,6 +117,7 @@ namespace FlightManagement.UI
                         List<Cargo> cargos = _cargoService.GetAllCargo();
                         cargos.Insert(0, new Cargo()
                         {
+                            Id = 0,
                             CargoItem = "Select Cargo Item"
                         });
                         ddlCargoItem.DataSource = cargos;
@@ -71,6 +135,7 @@ namespace FlightManagement.UI
                         List<Customer> customers = _customerService.GetAllCustomers();
                         customers.Insert(0, new Customer()
                         {
+                            Id = 0,
                             Name = "Select Customers"
                         });
                         ddlCustName.DataSource = customers;
@@ -149,7 +214,12 @@ namespace FlightManagement.UI
                                 if (bookSucc > 0)
                                 {
                                     MessageBox.Show("Plane booked successfully.", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                                    LoadAllBookingsCurrentDate();
                                     BookingClearance();
+                                }
+                                else if (bookSucc == 0)
+                                {
+                                    MessageBox.Show("Plane already booked for this time", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                                 }
                             }
                             else
@@ -159,7 +229,12 @@ namespace FlightManagement.UI
                                 if (bookSucc > 0)
                                 {
                                     MessageBox.Show("Plane booking updated successfully.", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                                    LoadAllBookingsCurrentDate();
                                     BookingClearance();
+                                }
+                                else if (bookSucc == 0)
+                                {
+                                    MessageBox.Show("Plane already booked for this time", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                                 }
                             }
                         }
@@ -203,6 +278,11 @@ namespace FlightManagement.UI
                                 {
                                     MessageBox.Show("Plane booked successfully.", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
                                     BookingClearance();
+                                    LoadAllBookingsCurrentDate();
+                                }
+                                else if (bookSucc == 0)
+                                {
+                                    MessageBox.Show("Plane already booked for this time", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                                 }
                             }
                             else
@@ -213,6 +293,11 @@ namespace FlightManagement.UI
                                 {
                                     MessageBox.Show("Plane booking updated successfully.", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
                                     BookingClearance();
+                                    LoadAllBookingsCurrentDate();
+                                }
+                                else if (bookSucc == 0)
+                                {
+                                    MessageBox.Show("Plane already booked for this time", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                                 }
                             }
                         }
@@ -227,13 +312,126 @@ namespace FlightManagement.UI
 
         private void BookingClearance()
         {
-            ddlPlaneType.SelectedIndex = 0;
-            txtBookedBy.Clear();
+            try
+            {
+                ddlPlaneType.Enabled = true;
+                ddlPlaneType.SelectedIndex = 0;
+                txtBookedBy.Clear();
+                btnSavePlaneBooking.Text = "Save";
+                btnDeletePlaneBooking.Enabled = false;
+            }
+            catch (Exception ex)
+            {
+                throw;
+            }
         }
 
         private void btnCancelPlaneBooking_Click(object sender, EventArgs e)
         {
-            BookingClearance();
+            try
+            {
+                BookingClearance();
+            }
+            catch (Exception ex)
+            {
+                throw;
+            }
+        }
+
+        private void txtSearchBooking_TextChanged(object sender, EventArgs e)
+        {
+            try
+            {
+                FilterBooking();
+            }
+            catch (Exception ex)
+            {
+                throw;
+            }
+        }
+
+        private void FilterBooking()
+        {
+            btnSeeEntireBooking.Text = "See Entire Booking";
+            List<PlaneBook> planeBooks = _planeBookService.GetBookingByCustName(txtSearchBooking.Text.ToLower().Trim(), dtPBookedDate.Value.ToShortDateString());
+            if (planeBooks.Count > 0)
+            {
+                dgvBooking.Rows.Clear();
+                for (int i = 0; i < planeBooks.Count; i++)
+                {
+                    dgvBooking.Rows.Add();
+                    dgvBooking.Rows[i].Cells["SN"].Value = i + 1;
+                    dgvBooking.Rows[i].Cells["Id"].Value = planeBooks[i].Id.ToString();
+                    dgvBooking.Rows[i].Cells["ClientName"].Value = planeBooks[i].BookedBy.ToString();
+                    dgvBooking.Rows[i].Cells["PlaneName"].Value = planeBooks[i].PlaneList.PlaneName.ToString();
+                    dgvBooking.Rows[i].Cells["PlaneType"].Value = planeBooks[i].PlaneList.PlaneType.ToString();
+                    dgvBooking.Rows[i].Cells["CargoItem"].Value = Convert.ToString(planeBooks[i].CargoList.CargoItem);
+                    dgvBooking.Rows[i].Cells["Departure"].Value = planeBooks[i].Departure.ToString();
+                    dgvBooking.Rows[i].Cells["Arrival"].Value = planeBooks[i].Arrival.ToString();
+                    dgvBooking.Rows[i].Cells["CustomerName"].Value = Convert.ToString(planeBooks[i].CustomerList.Name);
+                }
+            }
+        }
+
+        private void btnSeeEntireBooking_Click(object sender, EventArgs e)
+        {
+            if (btnSeeEntireBooking.Text == "See Entire Booking")
+            {
+                txtSearchBooking.Clear();
+                LoadAllBookings();
+                btnSeeEntireBooking.Text = "See Current Booking";
+            }
+            else if (btnSeeEntireBooking.Text == "See Current Booking")
+            {
+                LoadAllBookingsCurrentDate();
+                btnSeeEntireBooking.Text = "See Entire Booking";
+            }
+        }
+
+        private void dtPBookedDate_ValueChanged(object sender, EventArgs e)
+        {
+            try
+            {
+                FilterBooking();
+            }
+            catch (Exception ex)
+            {
+                throw;
+            }
+        }
+
+        private void dgvBooking_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+            try
+            {
+                ddlPlaneType.Enabled = false;
+                ddlPlaneType.Text = dgvBooking.CurrentRow.Cells["PlaneType"].Value.ToString();
+                string cargoItem = Convert.ToString(dgvBooking.CurrentRow.Cells["CargoItem"].Value);
+                string custName = Convert.ToString(dgvBooking.CurrentRow.Cells["CustomerName"].Value);
+                if (cargoItem == "")
+                {
+                    ddlCargoItem.Enabled = false;
+                    ddlCustName.Enabled = true;
+                    ddlCustName.Text = custName;
+                    dtPArrival.Value = Convert.ToDateTime(dgvBooking.CurrentRow.Cells["Arrival"].Value.ToString());
+                }
+                else
+                {
+                    ddlCargoItem.Enabled = true;
+                    ddlCustName.Enabled = false;
+                    ddlCargoItem.Text = dgvBooking.CurrentRow.Cells["CargoItem"].Value.ToString();
+                }
+                bookId = Convert.ToInt32(dgvBooking.CurrentRow.Cells["Id"].Value.ToString());
+                ddlPlaneName.Text = dgvBooking.CurrentRow.Cells["PlaneName"].Value.ToString();
+                dtPDeparture.Value = Convert.ToDateTime(dgvBooking.CurrentRow.Cells["Departure"].Value.ToString());
+                txtBookedBy.Text = dgvBooking.CurrentRow.Cells["ClientName"].Value.ToString();
+                btnSavePlaneBooking.Text = "Update";
+                btnDeletePlaneBooking.Enabled = true;
+            }
+            catch (Exception ex)
+            {
+                throw;
+            }
         }
     }
 }

@@ -10,7 +10,7 @@ namespace FlightManagement.Domain
         public int CustomerId { get; set; }
         public int CargoId { get; set; }
         public DateTime Departure { get; set; }
-        public DateTime Arrival { get; set; }
+        public DateTime? Arrival { get; set; }
         public Plane PlaneList { get; set; }
         public Customer CustomerList { get; set; }
         public Cargo CargoList { get; set; }

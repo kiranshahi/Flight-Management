@@ -36,11 +36,23 @@ namespace FlightManagement.BLL
             }
         }
 
-        public List<PlaneBook> GetBookingByCustName(string custName)
+        public List<PlaneBook> GetAllBookingCurrentDate(string departureDate)
         {
             try
             {
-                return _planeBookRepo.GetBookingByCustName(custName);
+                return _planeBookRepo.GetAllBookingCurrentDate(departureDate);
+            }
+            catch (Exception ex)
+            {
+                throw;
+            }
+        }
+
+        public List<PlaneBook> GetBookingByCustName(string custName, string departureDate)
+        {
+            try
+            {
+                return _planeBookRepo.GetBookingByCustName(custName, departureDate);
             }
             catch (Exception ex)
             {

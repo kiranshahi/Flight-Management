@@ -1,0 +1,5 @@
+D:\Projects\FlightManagement\FlightManagementProject\FlightManagement.Domain\bin\Release\FlightManagement.Domain.dll
+D:\Projects\FlightManagement\FlightManagementProject\FlightManagement.Domain\bin\Release\FlightManagement.Domain.pdb
+D:\Projects\FlightManagement\FlightManagementProject\FlightManagement.Domain\obj\Release\FlightManagement.Domain.csproj.CoreCompileInputs.cache
+D:\Projects\FlightManagement\FlightManagementProject\FlightManagement.Domain\obj\Release\FlightManagement.Domain.dll
+D:\Projects\FlightManagement\FlightManagementProject\FlightManagement.Domain\obj\Release\FlightManagement.Domain.pdb

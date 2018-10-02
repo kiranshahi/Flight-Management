@@ -31,11 +31,13 @@
             this.panel2 = new System.Windows.Forms.Panel();
             this.dtPArrival = new System.Windows.Forms.DateTimePicker();
             this.dtPDeparture = new System.Windows.Forms.DateTimePicker();
+            this.txtBookedBy = new System.Windows.Forms.TextBox();
             this.ddlCustName = new System.Windows.Forms.ComboBox();
             this.ddlCargoItem = new System.Windows.Forms.ComboBox();
             this.lblCargoItem = new System.Windows.Forms.Label();
             this.ddlPlaneName = new System.Windows.Forms.ComboBox();
             this.lblArrival = new System.Windows.Forms.Label();
+            this.lblBookedBy = new System.Windows.Forms.Label();
             this.lblDeparture = new System.Windows.Forms.Label();
             this.ddlPlaneType = new System.Windows.Forms.ComboBox();
             this.btnCancelPlaneBooking = new System.Windows.Forms.Button();
@@ -47,18 +49,22 @@
             this.lblBookPlane = new System.Windows.Forms.Label();
             this.lblCustName = new System.Windows.Forms.Label();
             this.panel1 = new System.Windows.Forms.Panel();
+            this.btnSeeEntireBooking = new System.Windows.Forms.Button();
             this.lblBookingDetails = new System.Windows.Forms.Label();
+            this.dtPBookedDate = new System.Windows.Forms.DateTimePicker();
             this.lblSearchBooking = new System.Windows.Forms.Label();
             this.txtSearchBooking = new System.Windows.Forms.TextBox();
             this.dgvBooking = new System.Windows.Forms.DataGridView();
             this.Id = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.SN = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ClientName = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.PlaneName = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.PlaneType = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Capacity = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Passengers = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.lblBookedBy = new System.Windows.Forms.Label();
-            this.txtBookedBy = new System.Windows.Forms.TextBox();
+            this.CargoItem = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Departure = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Arrival = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.CustomerName = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.lblBookedDate = new System.Windows.Forms.Label();
             this.panel2.SuspendLayout();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvBooking)).BeginInit();
@@ -86,31 +92,38 @@
             this.panel2.Controls.Add(this.lblBookPlane);
             this.panel2.Location = new System.Drawing.Point(11, 8);
             this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(639, 196);
+            this.panel2.Size = new System.Drawing.Size(870, 196);
             this.panel2.TabIndex = 0;
             // 
             // dtPArrival
             // 
-            this.dtPArrival.Location = new System.Drawing.Point(432, 100);
+            this.dtPArrival.Location = new System.Drawing.Point(537, 96);
             this.dtPArrival.Name = "dtPArrival";
-            this.dtPArrival.Size = new System.Drawing.Size(200, 20);
+            this.dtPArrival.Size = new System.Drawing.Size(324, 20);
             this.dtPArrival.TabIndex = 5;
             // 
             // dtPDeparture
             // 
             this.dtPDeparture.Location = new System.Drawing.Point(100, 99);
             this.dtPDeparture.Name = "dtPDeparture";
-            this.dtPDeparture.Size = new System.Drawing.Size(224, 20);
+            this.dtPDeparture.Size = new System.Drawing.Size(306, 20);
             this.dtPDeparture.TabIndex = 4;
+            // 
+            // txtBookedBy
+            // 
+            this.txtBookedBy.Location = new System.Drawing.Point(100, 133);
+            this.txtBookedBy.Name = "txtBookedBy";
+            this.txtBookedBy.Size = new System.Drawing.Size(306, 20);
+            this.txtBookedBy.TabIndex = 6;
             // 
             // ddlCustName
             // 
             this.ddlCustName.FormattingEnabled = true;
             this.ddlCustName.Items.AddRange(new object[] {
             "Select Customers"});
-            this.ddlCustName.Location = new System.Drawing.Point(432, 68);
+            this.ddlCustName.Location = new System.Drawing.Point(537, 64);
             this.ddlCustName.Name = "ddlCustName";
-            this.ddlCustName.Size = new System.Drawing.Size(200, 21);
+            this.ddlCustName.Size = new System.Drawing.Size(324, 21);
             this.ddlCustName.TabIndex = 3;
             // 
             // ddlCargoItem
@@ -118,15 +131,15 @@
             this.ddlCargoItem.FormattingEnabled = true;
             this.ddlCargoItem.Items.AddRange(new object[] {
             "Select Cargo Item"});
-            this.ddlCargoItem.Location = new System.Drawing.Point(432, 29);
+            this.ddlCargoItem.Location = new System.Drawing.Point(537, 25);
             this.ddlCargoItem.Name = "ddlCargoItem";
-            this.ddlCargoItem.Size = new System.Drawing.Size(201, 21);
+            this.ddlCargoItem.Size = new System.Drawing.Size(324, 21);
             this.ddlCargoItem.TabIndex = 1;
             // 
             // lblCargoItem
             // 
             this.lblCargoItem.AutoSize = true;
-            this.lblCargoItem.Location = new System.Drawing.Point(341, 33);
+            this.lblCargoItem.Location = new System.Drawing.Point(446, 29);
             this.lblCargoItem.Name = "lblCargoItem";
             this.lblCargoItem.Size = new System.Drawing.Size(58, 13);
             this.lblCargoItem.TabIndex = 14;
@@ -139,17 +152,26 @@
             "Select Planes"});
             this.ddlPlaneName.Location = new System.Drawing.Point(100, 68);
             this.ddlPlaneName.Name = "ddlPlaneName";
-            this.ddlPlaneName.Size = new System.Drawing.Size(224, 21);
+            this.ddlPlaneName.Size = new System.Drawing.Size(306, 21);
             this.ddlPlaneName.TabIndex = 2;
             // 
             // lblArrival
             // 
             this.lblArrival.AutoSize = true;
-            this.lblArrival.Location = new System.Drawing.Point(342, 102);
+            this.lblArrival.Location = new System.Drawing.Point(447, 100);
             this.lblArrival.Name = "lblArrival";
             this.lblArrival.Size = new System.Drawing.Size(39, 13);
             this.lblArrival.TabIndex = 8;
             this.lblArrival.Text = "Arrival:";
+            // 
+            // lblBookedBy
+            // 
+            this.lblBookedBy.AutoSize = true;
+            this.lblBookedBy.Location = new System.Drawing.Point(9, 138);
+            this.lblBookedBy.Name = "lblBookedBy";
+            this.lblBookedBy.Size = new System.Drawing.Size(62, 13);
+            this.lblBookedBy.TabIndex = 8;
+            this.lblBookedBy.Text = "Booked By:";
             // 
             // lblDeparture
             // 
@@ -169,7 +191,7 @@
             "Passenger"});
             this.ddlPlaneType.Location = new System.Drawing.Point(100, 29);
             this.ddlPlaneType.Name = "ddlPlaneType";
-            this.ddlPlaneType.Size = new System.Drawing.Size(224, 21);
+            this.ddlPlaneType.Size = new System.Drawing.Size(306, 21);
             this.ddlPlaneType.TabIndex = 0;
             this.ddlPlaneType.SelectedIndexChanged += new System.EventHandler(this.ddlPlaneType_SelectedIndexChanged);
             // 
@@ -197,7 +219,7 @@
             // lblCustomerName
             // 
             this.lblCustomerName.AutoSize = true;
-            this.lblCustomerName.Location = new System.Drawing.Point(341, 71);
+            this.lblCustomerName.Location = new System.Drawing.Point(446, 67);
             this.lblCustomerName.Name = "lblCustomerName";
             this.lblCustomerName.Size = new System.Drawing.Size(85, 13);
             this.lblCustomerName.TabIndex = 8;
@@ -251,40 +273,62 @@
             // 
             // panel1
             // 
+            this.panel1.Controls.Add(this.btnSeeEntireBooking);
             this.panel1.Controls.Add(this.lblBookingDetails);
+            this.panel1.Controls.Add(this.dtPBookedDate);
             this.panel1.Controls.Add(this.lblSearchBooking);
             this.panel1.Controls.Add(this.txtSearchBooking);
             this.panel1.Controls.Add(this.dgvBooking);
             this.panel1.Controls.Add(this.lblCustName);
+            this.panel1.Controls.Add(this.lblBookedDate);
             this.panel1.Location = new System.Drawing.Point(11, 210);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(639, 432);
+            this.panel1.Size = new System.Drawing.Size(870, 436);
             this.panel1.TabIndex = 1;
+            // 
+            // btnSeeEntireBooking
+            // 
+            this.btnSeeEntireBooking.Location = new System.Drawing.Point(721, 9);
+            this.btnSeeEntireBooking.Name = "btnSeeEntireBooking";
+            this.btnSeeEntireBooking.Size = new System.Drawing.Size(140, 23);
+            this.btnSeeEntireBooking.TabIndex = 12;
+            this.btnSeeEntireBooking.Text = "See Entire Booking";
+            this.btnSeeEntireBooking.UseVisualStyleBackColor = true;
+            this.btnSeeEntireBooking.Click += new System.EventHandler(this.btnSeeEntireBooking_Click);
             // 
             // lblBookingDetails
             // 
             this.lblBookingDetails.AutoSize = true;
-            this.lblBookingDetails.Location = new System.Drawing.Point(217, 34);
+            this.lblBookingDetails.Location = new System.Drawing.Point(383, 9);
             this.lblBookingDetails.Name = "lblBookingDetails";
             this.lblBookingDetails.Size = new System.Drawing.Size(84, 13);
             this.lblBookingDetails.TabIndex = 7;
             this.lblBookingDetails.Text = "Booking Details:";
             // 
+            // dtPBookedDate
+            // 
+            this.dtPBookedDate.Location = new System.Drawing.Point(105, 37);
+            this.dtPBookedDate.Name = "dtPBookedDate";
+            this.dtPBookedDate.Size = new System.Drawing.Size(255, 20);
+            this.dtPBookedDate.TabIndex = 4;
+            this.dtPBookedDate.ValueChanged += new System.EventHandler(this.dtPBookedDate_ValueChanged);
+            // 
             // lblSearchBooking
             // 
             this.lblSearchBooking.AutoSize = true;
-            this.lblSearchBooking.Location = new System.Drawing.Point(341, 36);
+            this.lblSearchBooking.Location = new System.Drawing.Point(527, 42);
             this.lblSearchBooking.Name = "lblSearchBooking";
-            this.lblSearchBooking.Size = new System.Drawing.Size(44, 13);
+            this.lblSearchBooking.Size = new System.Drawing.Size(85, 13);
             this.lblSearchBooking.TabIndex = 6;
-            this.lblSearchBooking.Text = "Search:";
+            this.lblSearchBooking.Text = "Customer Name:";
             // 
             // txtSearchBooking
             // 
-            this.txtSearchBooking.Location = new System.Drawing.Point(390, 33);
+            this.txtSearchBooking.Location = new System.Drawing.Point(618, 38);
             this.txtSearchBooking.Name = "txtSearchBooking";
             this.txtSearchBooking.Size = new System.Drawing.Size(243, 20);
             this.txtSearchBooking.TabIndex = 0;
+            this.txtSearchBooking.TextChanged += new System.EventHandler(this.txtSearchBooking_TextChanged);
             // 
             // dgvBooking
             // 
@@ -294,16 +338,20 @@
             this.dgvBooking.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.Id,
             this.SN,
+            this.ClientName,
             this.PlaneName,
             this.PlaneType,
-            this.Capacity,
-            this.Passengers});
+            this.CargoItem,
+            this.Departure,
+            this.Arrival,
+            this.CustomerName});
             this.dgvBooking.Location = new System.Drawing.Point(10, 62);
             this.dgvBooking.Name = "dgvBooking";
             this.dgvBooking.ReadOnly = true;
             this.dgvBooking.RowHeadersVisible = false;
-            this.dgvBooking.Size = new System.Drawing.Size(626, 370);
+            this.dgvBooking.Size = new System.Drawing.Size(855, 370);
             this.dgvBooking.TabIndex = 4;
+            this.dgvBooking.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvBooking_CellContentClick);
             // 
             // Id
             // 
@@ -319,6 +367,12 @@
             this.SN.ReadOnly = true;
             this.SN.Width = 50;
             // 
+            // ClientName
+            // 
+            this.ClientName.HeaderText = "Booked By";
+            this.ClientName.Name = "ClientName";
+            this.ClientName.ReadOnly = true;
+            // 
             // PlaneName
             // 
             this.PlaneName.HeaderText = "PlaneName";
@@ -332,41 +386,45 @@
             this.PlaneType.ReadOnly = true;
             this.PlaneType.Width = 150;
             // 
-            // Capacity
+            // CargoItem
             // 
-            this.Capacity.HeaderText = "Capacity";
-            this.Capacity.Name = "Capacity";
-            this.Capacity.ReadOnly = true;
-            this.Capacity.Width = 200;
+            this.CargoItem.HeaderText = "Cargo Item";
+            this.CargoItem.Name = "CargoItem";
+            this.CargoItem.ReadOnly = true;
             // 
-            // Passengers
+            // Departure
             // 
-            this.Passengers.HeaderText = "Passengers";
-            this.Passengers.Name = "Passengers";
-            this.Passengers.ReadOnly = true;
-            this.Passengers.Width = 150;
+            this.Departure.HeaderText = "Departure";
+            this.Departure.Name = "Departure";
+            this.Departure.ReadOnly = true;
             // 
-            // lblBookedBy
+            // Arrival
             // 
-            this.lblBookedBy.AutoSize = true;
-            this.lblBookedBy.Location = new System.Drawing.Point(9, 133);
-            this.lblBookedBy.Name = "lblBookedBy";
-            this.lblBookedBy.Size = new System.Drawing.Size(62, 13);
-            this.lblBookedBy.TabIndex = 8;
-            this.lblBookedBy.Text = "Booked By:";
+            this.Arrival.HeaderText = "Arrival";
+            this.Arrival.Name = "Arrival";
+            this.Arrival.ReadOnly = true;
             // 
-            // txtBookedBy
+            // CustomerName
             // 
-            this.txtBookedBy.Location = new System.Drawing.Point(100, 133);
-            this.txtBookedBy.Name = "txtBookedBy";
-            this.txtBookedBy.Size = new System.Drawing.Size(224, 20);
-            this.txtBookedBy.TabIndex = 6;
+            this.CustomerName.HeaderText = "CustomerName";
+            this.CustomerName.Name = "CustomerName";
+            this.CustomerName.ReadOnly = true;
+            this.CustomerName.Width = 150;
+            // 
+            // lblBookedDate
+            // 
+            this.lblBookedDate.AutoSize = true;
+            this.lblBookedDate.Location = new System.Drawing.Point(14, 40);
+            this.lblBookedDate.Name = "lblBookedDate";
+            this.lblBookedDate.Size = new System.Drawing.Size(73, 13);
+            this.lblBookedDate.TabIndex = 8;
+            this.lblBookedDate.Text = "Booked Date:";
             // 
             // PlaneBookingForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(655, 648);
+            this.ClientSize = new System.Drawing.Size(884, 649);
             this.Controls.Add(this.panel2);
             this.Controls.Add(this.panel1);
             this.Name = "PlaneBookingForm";
@@ -396,12 +454,6 @@
         private System.Windows.Forms.Label lblSearchBooking;
         private System.Windows.Forms.TextBox txtSearchBooking;
         private System.Windows.Forms.DataGridView dgvBooking;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Id;
-        private System.Windows.Forms.DataGridViewTextBoxColumn SN;
-        private System.Windows.Forms.DataGridViewTextBoxColumn PlaneName;
-        private System.Windows.Forms.DataGridViewTextBoxColumn PlaneType;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Capacity;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Passengers;
         private System.Windows.Forms.Label lblCustName;
         private System.Windows.Forms.ComboBox ddlCargoItem;
         private System.Windows.Forms.Label lblCargoItem;
@@ -413,5 +465,17 @@
         private System.Windows.Forms.Label lblArrival;
         private System.Windows.Forms.TextBox txtBookedBy;
         private System.Windows.Forms.Label lblBookedBy;
+        private System.Windows.Forms.DateTimePicker dtPBookedDate;
+        private System.Windows.Forms.Label lblBookedDate;
+        private System.Windows.Forms.Button btnSeeEntireBooking;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Id;
+        private System.Windows.Forms.DataGridViewTextBoxColumn SN;
+        private System.Windows.Forms.DataGridViewTextBoxColumn ClientName;
+        private System.Windows.Forms.DataGridViewTextBoxColumn PlaneName;
+        private System.Windows.Forms.DataGridViewTextBoxColumn PlaneType;
+        private System.Windows.Forms.DataGridViewTextBoxColumn CargoItem;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Departure;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Arrival;
+        private System.Windows.Forms.DataGridViewTextBoxColumn CustomerName;
     }
 }

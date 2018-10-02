@@ -1,0 +1,9 @@
+D:\Projects\FlightManagement\FlightManagementProject\FlightManagement.DAL\bin\Release\FlightManagement.DAL.dll
+D:\Projects\FlightManagement\FlightManagementProject\FlightManagement.DAL\bin\Release\FlightManagement.DAL.pdb
+D:\Projects\FlightManagement\FlightManagementProject\FlightManagement.DAL\bin\Release\FlightManagement.Domain.dll
+D:\Projects\FlightManagement\FlightManagementProject\FlightManagement.DAL\bin\Release\FlightManagement.Domain.pdb
+D:\Projects\FlightManagement\FlightManagementProject\FlightManagement.DAL\obj\Release\FlightManagement.DAL.csprojAssemblyReference.cache
+D:\Projects\FlightManagement\FlightManagementProject\FlightManagement.DAL\obj\Release\FlightManagement.DAL.csproj.CoreCompileInputs.cache
+D:\Projects\FlightManagement\FlightManagementProject\FlightManagement.DAL\obj\Release\FlightManagement.DAL.csproj.CopyComplete
+D:\Projects\FlightManagement\FlightManagementProject\FlightManagement.DAL\obj\Release\FlightManagement.DAL.dll
+D:\Projects\FlightManagement\FlightManagementProject\FlightManagement.DAL\obj\Release\FlightManagement.DAL.pdb

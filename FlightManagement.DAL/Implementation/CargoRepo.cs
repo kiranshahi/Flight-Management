@@ -25,7 +25,8 @@ namespace FlightManagement.DAL
 
         public List<Cargo> GetAllCargo()
         {
-            string sqlQuery = "Select * from Cargo";
+            string sqlQuery = @"SELECT Cargo.PlaneId, Plane.PlaneName, Cargo.Id, Cargo.CargoItem FROM Cargo
+                                INNER JOIN Plane ON Cargo.PlaneId = Plane.Id";
             DataTable dataTable = _dBO.GetTable(sqlQuery, null, CommandType.Text);
             List<Cargo> listCargo = new List<Cargo>();
             if (dataTable.Rows.Count > 0)
@@ -33,19 +34,38 @@ namespace FlightManagement.DAL
                 listCargo = dataTable.AsEnumerable().Select(m => new Cargo()
                 {
                     Id = m.Field<int>("Id"),
+                    PlaneId = m.Field<int>("PlaneId"),
+                    PlaneName = m.Field<string>("PlaneName"),
                     CargoItem = m.Field<string>("CargoItem"),
                 }).ToList();
             }
             return listCargo;
         }
 
+        public List<Plane> GetAllCargoPlanes()
+        {
+            string sqlQuery = "Select Id, PlaneName from Plane where planeType = 'Cargo'";
+            DataTable dataTable = _dBO.GetTable(sqlQuery, null, CommandType.Text);
+            List<Plane> listPlane = new List<Plane>();
+            if (dataTable.Rows.Count > 0)
+            {
+                listPlane = dataTable.AsEnumerable().Select(m => new Plane()
+                {
+                    Id = m.Field<int>("Id"),
+                    PlaneName = m.Field<string>("PlaneName"),
+                }).ToList();
+            }
+            return listPlane;
+        }
+
         public List<Cargo> GetCargoById(string cargoId)
         {
-            string sqlQuery = "Select * from Cargo where CargoItem Like @Name";
+            string sqlQuery = @"SELECT Cargo.PlaneId, Plane.PlaneName, Cargo.Id, Cargo.CargoItem FROM Cargo
+                                INNER JOIN Plane ON Cargo.PlaneId = Plane.Id where CargoItem Like @Name";
             SqlParameter[] param = new SqlParameter[]
-           {
+            {
                 new SqlParameter("@Name", cargoId +"%")
-           };
+            };
             DataTable dataTable = _dBO.GetTable(sqlQuery, param, CommandType.Text);
             List<Cargo> listCargo = new List<Cargo>();
             if (dataTable.Rows.Count > 0)
@@ -53,6 +73,8 @@ namespace FlightManagement.DAL
                 listCargo = dataTable.AsEnumerable().Select(m => new Cargo()
                 {
                     Id = m.Field<int>("Id"),
+                    PlaneId = m.Field<int>("PlaneId"),
+                    PlaneName = m.Field<string>("PlaneName"),
                     CargoItem = m.Field<string>("CargoItem"),
                 }).ToList();
             }
@@ -63,19 +85,21 @@ namespace FlightManagement.DAL
         {
             if (cargo.Id > 0)
             {
-                string sqlQuery2 = "Update Cargo set CargoItem = @Name where Id = @Id";
+                string sqlQuery2 = "Update Cargo set PlaneId = @PlaneId, CargoItem = @Name where Id = @Id";
                 SqlParameter[] param2 = new SqlParameter[]
                 {
-                new SqlParameter("@Id", cargo.Id),
-                new SqlParameter("@Name", cargo.CargoItem)
+                  new SqlParameter("@Id", cargo.Id),
+                  new SqlParameter("@PlaneId", cargo.PlaneId),
+                  new SqlParameter("@Name", cargo.CargoItem)
                 };
                 return _dBO.IUD(sqlQuery2, param2, CommandType.Text);
             }
             else
             {
-                string sqlQuery = "Insert into Cargo(CargoItem) values(@Name)";
+                string sqlQuery = "Insert into Cargo(CargoItem, PlaneId) values(@Name, @PlaneId)";
                 SqlParameter[] param = new SqlParameter[]
                 {
+                  new SqlParameter("@PlaneId", cargo.PlaneId),
                   new SqlParameter("@Name", cargo.CargoItem)
                 };
                 return _dBO.IUD(sqlQuery, param, CommandType.Text);
