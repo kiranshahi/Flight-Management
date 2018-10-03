@@ -20,3 +20,4 @@ D:\Projects\FlightManagement\FlightManagementProject\FlightManagement.UI\obj\Deb
 D:\Projects\FlightManagement\FlightManagementProject\FlightManagement.UI\obj\Debug\FlightManagement.UI.csproj.CopyComplete
 D:\Projects\FlightManagement\FlightManagementProject\FlightManagement.UI\obj\Debug\FlightManagement.UI.exe
 D:\Projects\FlightManagement\FlightManagementProject\FlightManagement.UI\obj\Debug\FlightManagement.UI.pdb
+D:\Projects\FlightManagement\FlightManagementProject\FlightManagement.UI\obj\Debug\FlightManagement.UI.MainForm.resources

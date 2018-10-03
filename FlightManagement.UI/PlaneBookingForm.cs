@@ -19,7 +19,7 @@ namespace FlightManagement.UI
             this._planeBookService = _planeBookService;
             this._planeService = _planeService;
             this._cargoService = _cargoService;
-            this._customerService = _customerService;
+            this._customerService = _customerService;         
             ddlPlaneType.SelectedIndex = 0;
             ddlPlaneName.SelectedIndex = 0;
             ddlCargoItem.SelectedIndex = 0;
@@ -433,5 +433,6 @@ namespace FlightManagement.UI
                 throw;
             }
         }
+
     }
 }

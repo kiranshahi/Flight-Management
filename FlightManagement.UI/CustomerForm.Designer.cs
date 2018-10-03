@@ -345,6 +345,7 @@
             this.ClientSize = new System.Drawing.Size(927, 650);
             this.Controls.Add(this.panel2);
             this.Controls.Add(this.panel1);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.Name = "CustomerForm";
             this.Text = "CustomerForm";
             this.panel1.ResumeLayout(false);

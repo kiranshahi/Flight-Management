@@ -65,15 +65,9 @@
             this.Arrival = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.CustomerName = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.lblBookedDate = new System.Windows.Forms.Label();
-            this.menuStrip1 = new System.Windows.Forms.MenuStrip();
-            this.customerToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.planeToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.cargoToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.bookToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.panel2.SuspendLayout();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvBooking)).BeginInit();
-            this.menuStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
             // panel2
@@ -96,7 +90,7 @@
             this.panel2.Controls.Add(this.btnSavePlaneBooking);
             this.panel2.Controls.Add(this.lblPlaneType);
             this.panel2.Controls.Add(this.lblBookPlane);
-            this.panel2.Location = new System.Drawing.Point(0, 26);
+            this.panel2.Location = new System.Drawing.Point(0, 1);
             this.panel2.Name = "panel2";
             this.panel2.Size = new System.Drawing.Size(870, 206);
             this.panel2.TabIndex = 0;
@@ -287,9 +281,9 @@
             this.panel1.Controls.Add(this.dgvBooking);
             this.panel1.Controls.Add(this.lblCustName);
             this.panel1.Controls.Add(this.lblBookedDate);
-            this.panel1.Location = new System.Drawing.Point(0, 238);
+            this.panel1.Location = new System.Drawing.Point(0, 213);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(870, 439);
+            this.panel1.Size = new System.Drawing.Size(870, 419);
             this.panel1.TabIndex = 1;
             // 
             // btnSeeEntireBooking
@@ -426,52 +420,13 @@
             this.lblBookedDate.TabIndex = 8;
             this.lblBookedDate.Text = "Booked Date:";
             // 
-            // menuStrip1
-            // 
-            this.menuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.customerToolStripMenuItem,
-            this.planeToolStripMenuItem,
-            this.cargoToolStripMenuItem,
-            this.bookToolStripMenuItem});
-            this.menuStrip1.Location = new System.Drawing.Point(0, 0);
-            this.menuStrip1.Name = "menuStrip1";
-            this.menuStrip1.Size = new System.Drawing.Size(884, 24);
-            this.menuStrip1.TabIndex = 3;
-            this.menuStrip1.Text = "menuStrip1";
-            // 
-            // customerToolStripMenuItem
-            // 
-            this.customerToolStripMenuItem.Name = "customerToolStripMenuItem";
-            this.customerToolStripMenuItem.Size = new System.Drawing.Size(71, 20);
-            this.customerToolStripMenuItem.Text = "Customer";
-            // 
-            // planeToolStripMenuItem
-            // 
-            this.planeToolStripMenuItem.Name = "planeToolStripMenuItem";
-            this.planeToolStripMenuItem.Size = new System.Drawing.Size(48, 20);
-            this.planeToolStripMenuItem.Text = "Plane";
-            // 
-            // cargoToolStripMenuItem
-            // 
-            this.cargoToolStripMenuItem.Name = "cargoToolStripMenuItem";
-            this.cargoToolStripMenuItem.Size = new System.Drawing.Size(51, 20);
-            this.cargoToolStripMenuItem.Text = "Cargo";
-            // 
-            // bookToolStripMenuItem
-            // 
-            this.bookToolStripMenuItem.Name = "bookToolStripMenuItem";
-            this.bookToolStripMenuItem.Size = new System.Drawing.Size(46, 20);
-            this.bookToolStripMenuItem.Text = "Book";
-            // 
             // PlaneBookingForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(884, 689);
+            this.ClientSize = new System.Drawing.Size(875, 634);
             this.Controls.Add(this.panel2);
             this.Controls.Add(this.panel1);
-            this.Controls.Add(this.menuStrip1);
-            this.IsMdiContainer = true;
             this.Name = "PlaneBookingForm";
             this.Text = "PlaneBookingForm";
             this.panel2.ResumeLayout(false);
@@ -479,10 +434,7 @@
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvBooking)).EndInit();
-            this.menuStrip1.ResumeLayout(false);
-            this.menuStrip1.PerformLayout();
             this.ResumeLayout(false);
-            this.PerformLayout();
 
         }
 
@@ -525,10 +477,5 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn Departure;
         private System.Windows.Forms.DataGridViewTextBoxColumn Arrival;
         private System.Windows.Forms.DataGridViewTextBoxColumn CustomerName;
-        private System.Windows.Forms.MenuStrip menuStrip1;
-        private System.Windows.Forms.ToolStripMenuItem customerToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem planeToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem cargoToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem bookToolStripMenuItem;
     }
 }
