@@ -1,0 +1,9 @@
+RESTORE FILELISTONLY
+FROM DISK = 'E:\Git\Flight-Management\FlightManagement.bak'
+
+RESTORE DATABASE FlightManagement
+FROM DISK = 'E:\Git\Flight-Management\FlightManagement.bak'
+
+WITH MOVE 'FlightManagement' TO 'E:\Git\Flight-Management\FlightManagement.mdf',
+MOVE 'FlightManagement_log' TO 'E:\Git\Flight-Management\FlightManagement.ldf',
+REPLACE;
