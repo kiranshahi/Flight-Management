@@ -16,7 +16,7 @@ namespace FlightManagement.DAL
         }
         public int Cancelbooking(string custName)
         {
-            string sqlQuery = "Delete from PlaneBook where CustomerId = (Select Id from Customer where Name = @CustName)";
+            string sqlQuery = "Delete from PlaneBook where BookedBy = @CustName";
             SqlParameter[] param = new SqlParameter[]
              {
                 new SqlParameter("@CustName", custName)
@@ -147,6 +147,10 @@ namespace FlightManagement.DAL
             DataTable dataTable = CheckBookStatus(planeBook.PlaneId, planeBook.Departure);
             if (dataTable.Rows.Count > 0)
             {
+                return 0;
+            }
+            else
+            {
                 if (planeBook.Id > 0)
                 {
                     string sqlQuery2 = "Update PlaneBook set PlaneId = @PlaneId, BookedBy = @BookedBy, CustomerId = @CustomerId, Departure = @Departure, Arrival = @Arrival where Id = @Id";
@@ -175,38 +179,42 @@ namespace FlightManagement.DAL
                     return _dBO.IUD(sqlQuery, param, CommandType.Text);
                 }
             }
-            else
-            {
-                return 0;
-            }
         }
 
         public int SaveUpdateBookingCargo(PlaneBook planeBook)
         {
-            if (planeBook.Id > 0)
+            DataTable dataTable = CheckBookStatus(planeBook.PlaneId, planeBook.Departure);
+            if (dataTable.Rows.Count > 0)
             {
-                string sqlQuery2 = "Update PlaneBook set BookedBy = @BookedBy, PlaneId = @PlaneId, CargoId = @CargoId, Departure = @Departure where Id = @Id";
-                SqlParameter[] param2 = new SqlParameter[]
+                return 0;
+            }
+            else
+            {
+                if (planeBook.Id > 0)
                 {
+                    string sqlQuery2 = "Update PlaneBook set BookedBy = @BookedBy, PlaneId = @PlaneId, CargoId = @CargoId, Departure = @Departure where Id = @Id";
+                    SqlParameter[] param2 = new SqlParameter[]
+                    {
                    new SqlParameter("@Id", planeBook.Id),
                    new SqlParameter("@BookedBy", planeBook.BookedBy),
                    new SqlParameter("@PlaneId", planeBook.PlaneId),
                    new SqlParameter("@CargoId", planeBook.CargoId),
                    new SqlParameter("@Departure", planeBook.Departure)
-                };
-                return _dBO.IUD(sqlQuery2, param2, CommandType.Text);
-            }
-            else
-            {
-                string sqlQuery = "Insert into PlaneBook(BookedBy, PlaneId, CargoId, Departure) values(@BookedBy, @PlaneId, @CargoId, @Departure)";
-                SqlParameter[] param = new SqlParameter[]
+                    };
+                    return _dBO.IUD(sqlQuery2, param2, CommandType.Text);
+                }
+                else
                 {
+                    string sqlQuery = "Insert into PlaneBook(BookedBy, PlaneId, CargoId, Departure) values(@BookedBy, @PlaneId, @CargoId, @Departure)";
+                    SqlParameter[] param = new SqlParameter[]
+                    {
                    new SqlParameter("@BookedBy", planeBook.BookedBy),
                    new SqlParameter("@PlaneId", planeBook.PlaneId),
                    new SqlParameter("@CargoId", planeBook.CargoId),
                    new SqlParameter("@Departure", planeBook.Departure)
-                };
-                return _dBO.IUD(sqlQuery, param, CommandType.Text);
+                    };
+                    return _dBO.IUD(sqlQuery, param, CommandType.Text);
+                }
             }
         }
 

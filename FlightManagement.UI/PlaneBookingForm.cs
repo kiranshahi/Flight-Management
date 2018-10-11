@@ -13,13 +13,14 @@ namespace FlightManagement.UI
         private readonly ICargoService _cargoService;
         private readonly ICustomerService _customerService;
         int bookId = 0;
+        string customerName = string.Empty;
         public PlaneBookingForm(IPlaneBookService _planeBookService, IPlaneService _planeService, ICargoService _cargoService, ICustomerService _customerService)
         {
             InitializeComponent();
             this._planeBookService = _planeBookService;
             this._planeService = _planeService;
             this._cargoService = _cargoService;
-            this._customerService = _customerService;         
+            this._customerService = _customerService;
             ddlPlaneType.SelectedIndex = 0;
             ddlPlaneName.SelectedIndex = 0;
             ddlCargoItem.SelectedIndex = 0;
@@ -422,6 +423,7 @@ namespace FlightManagement.UI
                     ddlCargoItem.Text = dgvBooking.CurrentRow.Cells["CargoItem"].Value.ToString();
                 }
                 bookId = Convert.ToInt32(dgvBooking.CurrentRow.Cells["Id"].Value.ToString());
+                customerName = dgvBooking.CurrentRow.Cells["ClientName"].Value.ToString();
                 ddlPlaneName.Text = dgvBooking.CurrentRow.Cells["PlaneName"].Value.ToString();
                 dtPDeparture.Value = Convert.ToDateTime(dgvBooking.CurrentRow.Cells["Departure"].Value.ToString());
                 txtBookedBy.Text = dgvBooking.CurrentRow.Cells["ClientName"].Value.ToString();
@@ -434,5 +436,23 @@ namespace FlightManagement.UI
             }
         }
 
+        private void btnDeletePlaneBooking_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                int delSucc = _planeBookService.Cancelbooking(customerName);
+                if (delSucc > 0)
+                {
+                    MessageBox.Show("Booking canceled successfully.", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    BookingClearance();
+                    LoadAllBookings();
+                    btnSeeEntireBooking.Text = "See Current Booking";
+                }
+            }
+            catch (Exception ex)
+            {
+                throw;
+            }
+        }
     }
 }

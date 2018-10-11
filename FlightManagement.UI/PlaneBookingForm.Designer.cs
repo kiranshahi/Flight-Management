@@ -92,7 +92,7 @@
             this.panel2.Controls.Add(this.lblBookPlane);
             this.panel2.Location = new System.Drawing.Point(0, 1);
             this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(870, 206);
+            this.panel2.Size = new System.Drawing.Size(881, 206);
             this.panel2.TabIndex = 0;
             // 
             // dtPArrival
@@ -215,6 +215,7 @@
             this.btnDeletePlaneBooking.TabIndex = 8;
             this.btnDeletePlaneBooking.Text = "Delete";
             this.btnDeletePlaneBooking.UseVisualStyleBackColor = true;
+            this.btnDeletePlaneBooking.Click += new System.EventHandler(this.btnDeletePlaneBooking_Click);
             // 
             // lblCustomerName
             // 
@@ -283,7 +284,7 @@
             this.panel1.Controls.Add(this.lblBookedDate);
             this.panel1.Location = new System.Drawing.Point(0, 213);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(870, 419);
+            this.panel1.Size = new System.Drawing.Size(881, 419);
             this.panel1.TabIndex = 1;
             // 
             // btnSeeEntireBooking
@@ -424,7 +425,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(875, 634);
+            this.ClientSize = new System.Drawing.Size(893, 634);
             this.Controls.Add(this.panel2);
             this.Controls.Add(this.panel1);
             this.Name = "PlaneBookingForm";
