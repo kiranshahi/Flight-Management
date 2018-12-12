@@ -352,7 +352,7 @@
             this.dgvBooking.RowHeadersVisible = false;
             this.dgvBooking.Size = new System.Drawing.Size(855, 353);
             this.dgvBooking.TabIndex = 4;
-            this.dgvBooking.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvBooking_CellContentClick);
+            this.dgvBooking.CellMouseDoubleClick += new System.Windows.Forms.DataGridViewCellMouseEventHandler(this.dgvBooking_CellMouseDoubleClick);
             // 
             // Id
             // 

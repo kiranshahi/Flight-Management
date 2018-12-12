@@ -145,25 +145,7 @@ namespace FlightManagement.UI
         {
             PlaneClearance();
         }
-
-        private void dgvPlane_CellContentClick(object sender, DataGridViewCellEventArgs e)
-        {
-            try
-            {
-                planeId = Convert.ToInt32(dgvPlane.CurrentRow.Cells["Id"].Value.ToString());
-                txtPlaneName.Text = dgvPlane.CurrentRow.Cells["PlaneName"].Value.ToString();
-                ddlPlaneType.Text = dgvPlane.CurrentRow.Cells["PlaneType"].Value.ToString();
-                txtMaxCapacity.Text = dgvPlane.CurrentRow.Cells["Capacity"].Value.ToString();
-                txtPassNumber.Text = dgvPlane.CurrentRow.Cells["Passengers"].Value.ToString();
-                btnSavePlane.Text = "Update";
-                btnDeletePlane.Enabled = true;
-            }
-            catch (Exception ex)
-            {
-                throw;
-            }
-        }
-
+        
         private void txtSearchPlane_TextChanged(object sender, EventArgs e)
         {
             try
@@ -180,6 +162,24 @@ namespace FlightManagement.UI
                     dgvPlane.Rows[i].Cells["Capacity"].Value = planes[i].Capacity.ToString();
                     dgvPlane.Rows[i].Cells["Passengers"].Value = planes[i].PassengerNumber.ToString();
                 }
+            }
+            catch (Exception ex)
+            {
+                throw;
+            }
+        }
+
+        private void dgvPlane_CellMouseDoubleClick(object sender, DataGridViewCellMouseEventArgs e)
+        {
+            try
+            {
+                planeId = Convert.ToInt32(dgvPlane.CurrentRow.Cells["Id"].Value.ToString());
+                txtPlaneName.Text = dgvPlane.CurrentRow.Cells["PlaneName"].Value.ToString();
+                ddlPlaneType.Text = dgvPlane.CurrentRow.Cells["PlaneType"].Value.ToString();
+                txtMaxCapacity.Text = dgvPlane.CurrentRow.Cells["Capacity"].Value.ToString();
+                txtPassNumber.Text = dgvPlane.CurrentRow.Cells["Passengers"].Value.ToString();
+                btnSavePlane.Text = "Update";
+                btnDeletePlane.Enabled = true;
             }
             catch (Exception ex)
             {

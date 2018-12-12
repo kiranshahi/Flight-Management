@@ -32,7 +32,9 @@
             this.ddlPlaneType = new System.Windows.Forms.ComboBox();
             this.btnCancelPlane = new System.Windows.Forms.Button();
             this.btnDeletePlane = new System.Windows.Forms.Button();
+            this.txtPlaneName = new System.Windows.Forms.TextBox();
             this.txtPassNumber = new System.Windows.Forms.TextBox();
+            this.lblPlaneName = new System.Windows.Forms.Label();
             this.btnSavePlane = new System.Windows.Forms.Button();
             this.lblPassNum = new System.Windows.Forms.Label();
             this.txtMaxCapacity = new System.Windows.Forms.TextBox();
@@ -44,8 +46,6 @@
             this.lblSearchPlane = new System.Windows.Forms.Label();
             this.txtSearchPlane = new System.Windows.Forms.TextBox();
             this.dgvPlane = new System.Windows.Forms.DataGridView();
-            this.lblPlaneName = new System.Windows.Forms.Label();
-            this.txtPlaneName = new System.Windows.Forms.TextBox();
             this.Id = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.SN = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.PlaneName = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -111,12 +111,28 @@
             this.btnDeletePlane.UseVisualStyleBackColor = true;
             this.btnDeletePlane.Click += new System.EventHandler(this.btnDeletePlane_Click);
             // 
+            // txtPlaneName
+            // 
+            this.txtPlaneName.Location = new System.Drawing.Point(419, 33);
+            this.txtPlaneName.Name = "txtPlaneName";
+            this.txtPlaneName.Size = new System.Drawing.Size(217, 20);
+            this.txtPlaneName.TabIndex = 1;
+            // 
             // txtPassNumber
             // 
             this.txtPassNumber.Location = new System.Drawing.Point(419, 96);
             this.txtPassNumber.Name = "txtPassNumber";
             this.txtPassNumber.Size = new System.Drawing.Size(217, 20);
             this.txtPassNumber.TabIndex = 3;
+            // 
+            // lblPlaneName
+            // 
+            this.lblPlaneName.AutoSize = true;
+            this.lblPlaneName.Location = new System.Drawing.Point(339, 36);
+            this.lblPlaneName.Name = "lblPlaneName";
+            this.lblPlaneName.Size = new System.Drawing.Size(68, 13);
+            this.lblPlaneName.TabIndex = 8;
+            this.lblPlaneName.Text = "Plane Name:";
             // 
             // btnSavePlane
             // 
@@ -226,23 +242,7 @@
             this.dgvPlane.RowHeadersVisible = false;
             this.dgvPlane.Size = new System.Drawing.Size(626, 370);
             this.dgvPlane.TabIndex = 4;
-            this.dgvPlane.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvPlane_CellContentClick);
-            // 
-            // lblPlaneName
-            // 
-            this.lblPlaneName.AutoSize = true;
-            this.lblPlaneName.Location = new System.Drawing.Point(339, 36);
-            this.lblPlaneName.Name = "lblPlaneName";
-            this.lblPlaneName.Size = new System.Drawing.Size(68, 13);
-            this.lblPlaneName.TabIndex = 8;
-            this.lblPlaneName.Text = "Plane Name:";
-            // 
-            // txtPlaneName
-            // 
-            this.txtPlaneName.Location = new System.Drawing.Point(419, 33);
-            this.txtPlaneName.Name = "txtPlaneName";
-            this.txtPlaneName.Size = new System.Drawing.Size(217, 20);
-            this.txtPlaneName.TabIndex = 1;
+            this.dgvPlane.CellMouseDoubleClick += new System.Windows.Forms.DataGridViewCellMouseEventHandler(this.dgvPlane_CellMouseDoubleClick);
             // 
             // Id
             // 

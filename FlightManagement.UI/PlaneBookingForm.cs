@@ -12,8 +12,8 @@ namespace FlightManagement.UI
         private readonly IPlaneService _planeService;
         private readonly ICargoService _cargoService;
         private readonly ICustomerService _customerService;
-        int bookId = 0;
-        string customerName = string.Empty;
+        private int bookId = 0;
+        private string customerName = string.Empty;
         public PlaneBookingForm(IPlaneBookService _planeBookService, IPlaneService _planeService, ICargoService _cargoService, ICustomerService _customerService)
         {
             InitializeComponent();
@@ -51,7 +51,7 @@ namespace FlightManagement.UI
                     }
                 }
             }
-            catch (Exception ex)
+            catch (Exception)
             {
                 throw;
             }
@@ -80,7 +80,7 @@ namespace FlightManagement.UI
                     }
                 }
             }
-            catch (Exception ex)
+            catch (Exception)
             {
                 throw;
             }
@@ -145,7 +145,7 @@ namespace FlightManagement.UI
                     }
                 }
             }
-            catch (Exception ex)
+            catch (Exception)
             {
                 throw;
             }
@@ -164,7 +164,7 @@ namespace FlightManagement.UI
                 ddlPlaneName.DisplayMember = "PlaneName";
                 ddlPlaneName.ValueMember = "Id";
             }
-            catch (Exception ex)
+            catch (Exception)
             {
                 throw;
             }
@@ -174,9 +174,9 @@ namespace FlightManagement.UI
         {
             try
             {
-                int planeId = 0, custId = 0, cargoId = 0;
+                int custId = 0, cargoId = 0;
                 string bookedBy = txtBookedBy.Text.Trim();
-                int.TryParse(ddlPlaneName.SelectedValue.ToString(), out planeId);
+                int.TryParse(ddlPlaneName.SelectedValue.ToString(), out int planeId);
                 DateTime departure = dtPDeparture.Value;
                 DateTime arrival = dtPArrival.Value;
                 if (ddlPlaneType.Text == "Cargo")
@@ -305,7 +305,7 @@ namespace FlightManagement.UI
                     }
                 }
             }
-            catch (Exception ex)
+            catch (Exception)
             {
                 throw;
             }
@@ -321,7 +321,7 @@ namespace FlightManagement.UI
                 btnSavePlaneBooking.Text = "Save";
                 btnDeletePlaneBooking.Enabled = false;
             }
-            catch (Exception ex)
+            catch (Exception)
             {
                 throw;
             }
@@ -333,7 +333,7 @@ namespace FlightManagement.UI
             {
                 BookingClearance();
             }
-            catch (Exception ex)
+            catch (Exception)
             {
                 throw;
             }
@@ -345,7 +345,7 @@ namespace FlightManagement.UI
             {
                 FilterBooking();
             }
-            catch (Exception ex)
+            catch (Exception)
             {
                 throw;
             }
@@ -395,14 +395,34 @@ namespace FlightManagement.UI
             {
                 FilterBooking();
             }
-            catch (Exception ex)
+            catch (Exception)
             {
                 throw;
             }
         }
 
-        private void dgvBooking_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        private void btnDeletePlaneBooking_Click(object sender, EventArgs e)
         {
+            try
+            {
+                int delSucc = _planeBookService.Cancelbooking(customerName);
+                if (delSucc > 0)
+                {
+                    MessageBox.Show("Booking canceled successfully.", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    BookingClearance();
+                    LoadAllBookings();
+                    btnSeeEntireBooking.Text = "See Current Booking";
+                }
+            }
+            catch (Exception)
+            {
+                throw;
+            }
+        }
+
+        private void dgvBooking_CellMouseDoubleClick(object sender, DataGridViewCellMouseEventArgs e)
+        {
+
             try
             {
                 ddlPlaneType.Enabled = false;
@@ -430,26 +450,7 @@ namespace FlightManagement.UI
                 btnSavePlaneBooking.Text = "Update";
                 btnDeletePlaneBooking.Enabled = true;
             }
-            catch (Exception ex)
-            {
-                throw;
-            }
-        }
-
-        private void btnDeletePlaneBooking_Click(object sender, EventArgs e)
-        {
-            try
-            {
-                int delSucc = _planeBookService.Cancelbooking(customerName);
-                if (delSucc > 0)
-                {
-                    MessageBox.Show("Booking canceled successfully.", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                    BookingClearance();
-                    LoadAllBookings();
-                    btnSeeEntireBooking.Text = "See Current Booking";
-                }
-            }
-            catch (Exception ex)
+            catch (Exception)
             {
                 throw;
             }

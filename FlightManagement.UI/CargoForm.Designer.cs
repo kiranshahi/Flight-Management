@@ -193,7 +193,7 @@
             this.dgvCargo.RowHeadersVisible = false;
             this.dgvCargo.Size = new System.Drawing.Size(453, 370);
             this.dgvCargo.TabIndex = 4;
-            this.dgvCargo.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvCargo_CellContentClick);
+            this.dgvCargo.CellMouseDoubleClick += new System.Windows.Forms.DataGridViewCellMouseEventHandler(this.dgvCargo_CellMouseDoubleClick);
             // 
             // Id
             // 

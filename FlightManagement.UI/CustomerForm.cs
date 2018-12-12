@@ -143,27 +143,7 @@ namespace FlightManagement.UI
                 throw;
             }
         }
-
-        private void dgvCustomer_CellContentClick(object sender, DataGridViewCellEventArgs e)
-        {
-            try
-            {
-                custId = Convert.ToInt32(dgvCustomer.CurrentRow.Cells["Id"].Value.ToString());
-                txtName.Text = dgvCustomer.CurrentRow.Cells["CustomerName"].Value.ToString();
-                txtAddress.Text = dgvCustomer.CurrentRow.Cells["Address"].Value.ToString();
-                txtCity.Text = dgvCustomer.CurrentRow.Cells["City"].Value.ToString();
-                txtCountry.Text = dgvCustomer.CurrentRow.Cells["Country"].Value.ToString();
-                txtContact.Text = dgvCustomer.CurrentRow.Cells["Contact"].Value.ToString();
-                txtEmail.Text = dgvCustomer.CurrentRow.Cells["Email"].Value.ToString();
-                btnSaveCust.Text = "Update";
-                btnDelete.Enabled = true;
-            }
-            catch (Exception ex)
-            {
-                throw;
-            }
-        }
-
+        
         private void btnDelete_Click(object sender, EventArgs e)
         {
             try
@@ -200,6 +180,26 @@ namespace FlightManagement.UI
                     dgvCustomer.Rows[i].Cells["Contact"].Value = customers[i].Contact.ToString();
                     dgvCustomer.Rows[i].Cells["Email"].Value = customers[i].Email.ToString();
                 }
+            }
+            catch (Exception ex)
+            {
+                throw;
+            }
+        }
+
+        private void dgvCustomer_CellMouseDoubleClick(object sender, DataGridViewCellMouseEventArgs e)
+        {
+            try
+            {
+                custId = Convert.ToInt32(dgvCustomer.CurrentRow.Cells["Id"].Value.ToString());
+                txtName.Text = dgvCustomer.CurrentRow.Cells["CustomerName"].Value.ToString();
+                txtAddress.Text = dgvCustomer.CurrentRow.Cells["Address"].Value.ToString();
+                txtCity.Text = dgvCustomer.CurrentRow.Cells["City"].Value.ToString();
+                txtCountry.Text = dgvCustomer.CurrentRow.Cells["Country"].Value.ToString();
+                txtContact.Text = dgvCustomer.CurrentRow.Cells["Contact"].Value.ToString();
+                txtEmail.Text = dgvCustomer.CurrentRow.Cells["Email"].Value.ToString();
+                btnSaveCust.Text = "Update";
+                btnDelete.Enabled = true;
             }
             catch (Exception ex)
             {

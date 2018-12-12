@@ -9,7 +9,7 @@ namespace FlightManagement.UI
     public partial class CargoForm : Form
     {
         private readonly ICargoService _cargoService;
-        int cargoId = 0;
+        private int cargoId = 0;
         public CargoForm(ICargoService _cargoService)
         {
             InitializeComponent();
@@ -37,7 +37,7 @@ namespace FlightManagement.UI
                     }
                 }
             }
-            catch (Exception ex)
+            catch (Exception)
             {
                 throw;
             }
@@ -56,7 +56,7 @@ namespace FlightManagement.UI
                 ddlPlaneName.DisplayMember = "PlaneName";
                 ddlPlaneName.ValueMember = "Id";
             }
-            catch (Exception ex)
+            catch (Exception)
             {
                 throw;
             }
@@ -109,9 +109,9 @@ namespace FlightManagement.UI
                         CargoClearance();
                         LoadAllCargo();
                     }
-                }                
+                }
             }
-            catch (Exception ex)
+            catch (Exception)
             {
                 throw;
             }
@@ -137,7 +137,7 @@ namespace FlightManagement.UI
                     LoadAllCargo();
                 }
             }
-            catch (Exception ex)
+            catch (Exception)
             {
                 throw;
             }
@@ -149,23 +149,7 @@ namespace FlightManagement.UI
             {
                 CargoClearance();
             }
-            catch (Exception ex)
-            {
-                throw;
-            }
-        }
-
-        private void dgvCargo_CellContentClick(object sender, DataGridViewCellEventArgs e)
-        {
-            try
-            {
-                cargoId = Convert.ToInt32(dgvCargo.CurrentRow.Cells["Id"].Value.ToString());
-                txtCargoItem.Text = dgvCargo.CurrentRow.Cells["CargoItem"].Value.ToString();
-                ddlPlaneName.Text = dgvCargo.CurrentRow.Cells["PlaneName"].Value.ToString();
-                btnSaveCargo.Text = "Update";
-                btnDeleteCargo.Enabled = true;
-            }
-            catch (Exception ex)
+            catch (Exception)
             {
                 throw;
             }
@@ -186,7 +170,23 @@ namespace FlightManagement.UI
                     dgvCargo.Rows[i].Cells["CargoItem"].Value = cargos[i].CargoItem.ToString();
                 }
             }
-            catch (Exception ex)
+            catch (Exception)
+            {
+                throw;
+            }
+        }
+
+        private void dgvCargo_CellMouseDoubleClick(object sender, DataGridViewCellMouseEventArgs e)
+        {
+            try
+            {
+                cargoId = Convert.ToInt32(dgvCargo.CurrentRow.Cells["Id"].Value.ToString());
+                txtCargoItem.Text = dgvCargo.CurrentRow.Cells["CargoItem"].Value.ToString();
+                ddlPlaneName.Text = dgvCargo.CurrentRow.Cells["PlaneName"].Value.ToString();
+                btnSaveCargo.Text = "Update";
+                btnDeleteCargo.Enabled = true;
+            }
+            catch (Exception)
             {
                 throw;
             }
