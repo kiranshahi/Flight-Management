@@ -38,6 +38,6 @@ This is the sample system for small charter airline to manage its flights and cu
 
 [Cargo]: https://github.com/kiranshahi/Flight-Management/blob/master/Screenshots/Cargo.PNG "Cargo Screen of Flight Management System"
 
-![Bookings Screen of Flight Management System][homeScreen]
+![Bookings Screen of Flight Management System][Bookings]
 
 [Bookings]: https://github.com/kiranshahi/Flight-Management/blob/master/Screenshots/Bookings.PNG "Bookings Screen of Flight Management System"
